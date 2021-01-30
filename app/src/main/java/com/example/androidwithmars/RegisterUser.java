@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +26,9 @@ import java.util.Objects;
 
 public class RegisterUser extends AppCompatActivity {
     private static final String TAG = "RegisterUser";
-    private EditText fullName, mEmail, mPassword;
+    private EditText mFullName, mEmail, mPassword, mPhone;
+    private ImageView uploadImage;
+
     private Button btnRegister;
     private TextView signIn;
     private FirebaseAuth firebaseAuth;
@@ -47,12 +50,23 @@ public class RegisterUser extends AppCompatActivity {
             public void onClick(View v) {
                 String email = mEmail.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
+                String phone = mPhone.getText().toString().trim();
+                String fullName  = mFullName.getText().toString().trim();
+
                 if ( TextUtils.isEmpty(email)){
                     mEmail.setError("Enter email");
                     return;
                 }
                 if ( TextUtils.isEmpty(password)){
                     mPassword.setError("Enter Password");
+                    return;
+                }
+                if ( TextUtils.isEmpty(phone)){
+                    mPassword.setError("Enter Phone");
+                    return;
+                }
+                if ( TextUtils.isEmpty(fullName)){
+                    mPassword.setError("Enter Full Name");
                     return;
                 }
                 if (password.length()<6){
@@ -68,6 +82,7 @@ public class RegisterUser extends AppCompatActivity {
 
                             //verify user
                             FirebaseUser user = firebaseAuth.getCurrentUser();
+
                             user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
@@ -82,17 +97,14 @@ public class RegisterUser extends AppCompatActivity {
                                 }
                             });
 
-
-
-
                             Toast.makeText(RegisterUser.this, "Profile Created", Toast.LENGTH_SHORT).show();
-
                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
-
                         }else {
-                            Toast.makeText(RegisterUser.this, "Error..!!"+
+                            Toast.makeText(RegisterUser.this, "Error..!!" +
                                           task.getException().getMessage()
                                     , Toast.LENGTH_LONG).show();
+
+
                         }
                     }
                 });
@@ -109,10 +121,15 @@ public class RegisterUser extends AppCompatActivity {
     }
 
     private void initViews() {
-        fullName = findViewById(R.id.fullName);
+        mFullName = findViewById(R.id.fullName);
         mEmail = findViewById(R.id.userEmail);
         mPassword = findViewById(R.id.password);
         btnRegister = findViewById(R.id.btnRegister);
+
+        uploadImage = findViewById(R.id.uploadImage);
+
+        mPhone = findViewById(R.id.phone);
+
         signIn = findViewById(R.id.signIn);
         firebaseAuth = FirebaseAuth.getInstance();
     }
