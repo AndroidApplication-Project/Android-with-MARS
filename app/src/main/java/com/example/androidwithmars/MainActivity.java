@@ -25,6 +25,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Objects;
+
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -43,42 +45,34 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initViews();
 
-
-
         final FirebaseUser user = firebaseAuth.getCurrentUser();
 
-
-//        if (!user.isEmailVerified()){
+//        if (!Objects.requireNonNull(user).isEmailVerified()) {
 //
-////          verifyMessage.setVisibility(View.VISIBLE);
+////            verifyMessage.setVisibility(View.VISIBLE);
 ////            resendCode.setVisibility(View.VISIBLE);
 //
 //
-//            resendCode.setOnClickListener(new View.OnClickListener() {
-//
-//                @Override
-//                public void onClick(final  View v) {
-//
-//                    user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-//                        @Override
-//                        public void onSuccess(Void aVoid) {
-//                            Toast.makeText(v.getContext(), "Verification Email Sent", Toast.LENGTH_SHORT).show();
-//
-//                        }
-//                    }).addOnFailureListener(new OnFailureListener() {
-//                        @Override
-//                        public void onFailure(@NonNull Exception e) {
-//                            Log.d(TAG, "onFailure: Failed"+e.getMessage());
-//
-//                        }
-//                    });
-//                }
-//            });
+////            resendCode.setOnClickListener(new View.OnClickListener() {
+////                @Override
+////                public void onClick(final View v) {
+////                    user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+////                        @Override
+////                        public void onSuccess(Void aVoid) {
+////                            Toast.makeText(v.getContext(), "Verification Email Sent", Toast.LENGTH_SHORT).show();
+////
+////                        }
+////                    }).addOnFailureListener(new OnFailureListener() {
+////                        @Override
+////                        public void onFailure(@NonNull Exception e) {
+////                            Log.d(TAG, "onFailure: Failed" + e.getMessage());
+////
+////                        }
+////                    });
+////                }
+////            });
 //
 //        }
-
-
-
 
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
@@ -122,14 +116,14 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.logout: {
 
-                        Toast.makeText(MainActivity.this, "Logout  Selected", Toast.LENGTH_SHORT).show();
-//                        logout.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-//                            @Override
-//                            public boolean onMenuItemClick(MenuItem item) {
-//                                Toast.makeText(MainActivity.this, "Hahahahahah", Toast.LENGTH_SHORT).show();
-//                                return true;
-//                            }
-//                        });
+//                        Toast.makeText(MainActivity.this, "Logout  Selected", Toast.LENGTH_SHORT).show();
+                        NavigationView navigationView = findViewById(R.id.navigationView);
+                        navigationView.getMenu().findItem(R.id.logout).setOnMenuItemClickListener(MenuItem ->
+                        {
+                            logout();
+                            return true;
+
+                        });
                         break;
                     }
 
@@ -145,15 +139,8 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.container, new MainFragment());
         transaction.commit();
     }
-//
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.navigation_drawer_menu, menu);
-//        return true;
-//    }
 
-    public void logout(View view) {
+    public void logout() {
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(getApplicationContext(), UserLogin.class));
         finish();
@@ -163,11 +150,10 @@ public class MainActivity extends AppCompatActivity {
         drawer = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.navigationView);
         toolbar = findViewById(R.id.toolbar);
-        resendCode= findViewById(R.id.resendCode);
-        verifyMessage =  findViewById(R.id.verifyMessage);
+        resendCode = findViewById(R.id.resendCode);
+        verifyMessage = findViewById(R.id.verifyMessage);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
-
 
     }
 }
