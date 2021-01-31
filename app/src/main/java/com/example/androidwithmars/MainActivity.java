@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
@@ -46,33 +47,31 @@ public class MainActivity extends AppCompatActivity {
         initViews();
 
         final FirebaseUser user = firebaseAuth.getCurrentUser();
+        if (!Objects.requireNonNull(user).isEmailVerified()) {
+            verifyMessage.setVisibility(View.VISIBLE);
+            resendCode.setVisibility(View.VISIBLE);
 
-//        if (!Objects.requireNonNull(user).isEmailVerified()) {
-//
-////            verifyMessage.setVisibility(View.VISIBLE);
-////            resendCode.setVisibility(View.VISIBLE);
-//
-//
-////            resendCode.setOnClickListener(new View.OnClickListener() {
-////                @Override
-////                public void onClick(final View v) {
-////                    user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-////                        @Override
-////                        public void onSuccess(Void aVoid) {
-////                            Toast.makeText(v.getContext(), "Verification Email Sent", Toast.LENGTH_SHORT).show();
-////
-////                        }
-////                    }).addOnFailureListener(new OnFailureListener() {
-////                        @Override
-////                        public void onFailure(@NonNull Exception e) {
-////                            Log.d(TAG, "onFailure: Failed" + e.getMessage());
-////
-////                        }
-////                    });
-////                }
-////            });
-//
-//        }
+
+            resendCode.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(final View v) {
+                    user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(v.getContext(), "Verification Email Sent", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.d(TAG, "onFailure: Failed" + e.getMessage());
+
+                        }
+                    });
+                }
+            });
+
+        }
 
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
@@ -91,7 +90,11 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.quiz:
                         Toast.makeText(MainActivity.this, "Quiz Selected", Toast.LENGTH_SHORT).show();
+                        Fragment fragment = new Fragment();
+                        moveToFragment(fragment);
                         break;
+
+
 
                     case R.id.notes:
                         Toast.makeText(MainActivity.this, "Notes Selected", Toast.LENGTH_SHORT).show();
@@ -116,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.logout: {
 
-//                        Toast.makeText(MainActivity.this, "Logout  Selected", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Logout  Selected", Toast.LENGTH_SHORT).show();
                         NavigationView navigationView = findViewById(R.id.navigationView);
                         navigationView.getMenu().findItem(R.id.logout).setOnMenuItemClickListener(MenuItem ->
                         {
@@ -140,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
         transaction.commit();
     }
 
+
     public void logout() {
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(getApplicationContext(), UserLogin.class));
@@ -156,4 +160,8 @@ public class MainActivity extends AppCompatActivity {
         firebaseFirestore = FirebaseFirestore.getInstance();
 
     }
-}
+    private void moveToFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, fragment, fragment.getClass().getSimpleName()).addToBackStack(null).commit();
+    }
+    }
