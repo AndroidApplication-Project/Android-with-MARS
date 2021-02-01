@@ -47,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
         initViews();
 
         final FirebaseUser user = firebaseAuth.getCurrentUser();
-        if (!Objects.requireNonNull(user).isEmailVerified()) {
-            verifyMessage.setVisibility(View.VISIBLE);
+      //  if (!Objects.requireNonNull(user).isEmailVerified()) {
+/*            verifyMessage.setVisibility(View.VISIBLE);
             resendCode.setVisibility(View.VISIBLE);
 
 
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-        }
+        }*/
 
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
@@ -111,7 +111,10 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.videos:
                         Toast.makeText(MainActivity.this, "Videos Selected", Toast.LENGTH_SHORT).show();
+                        Fragment fragment1 = new VideoFragment();
+                        moveToFragment(fragment1);
                         break;
+
 
                     case R.id.settings:
                         Toast.makeText(MainActivity.this, "Settings Selected", Toast.LENGTH_SHORT).show();
