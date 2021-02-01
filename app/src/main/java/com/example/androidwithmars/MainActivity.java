@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.quiz:
                         Toast.makeText(MainActivity.this, "Quiz Selected", Toast.LENGTH_SHORT).show();
-                        Fragment fragment = new Fragment();
+                        Fragment fragment = new QuizFragment();
                         moveToFragment(fragment);
                         break;
 

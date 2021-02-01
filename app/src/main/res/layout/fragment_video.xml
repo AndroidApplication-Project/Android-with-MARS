@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         app:videoId="Ob4vSoWud9k"
         app:autoPlay="false"
-        app:showYouTubeButton="false"/>
+        app:showYouTubeButton="false"
+        tools:ignore="MissingClass" />
 
 
     <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
@@ -22,7 +23,8 @@
         app:videoId="4jgYGrms5VA"
         android:layout_marginTop="16dp"
         app:autoPlay="false"
-        app:showYouTubeButton="false"/>
+        app:showYouTubeButton="false"
+        tools:ignore="MissingClass" />
 
 
 </LinearLayout>
