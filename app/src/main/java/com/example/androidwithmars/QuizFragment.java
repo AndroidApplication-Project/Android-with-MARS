@@ -8,29 +8,31 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
 public class QuizFragment extends Fragment {
+    private static final String TAG = "MainFragment";
+
+    private RecyclerView beginnerRecView, intermediateRecView, advancedRecView;
 
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-      return inflater.inflate(R.layout.fragment_quiz, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_main, container, false);
+
+        initViews(view);
+        return view;
+    }
+    private void initViews(View view) {
+
+        beginnerRecView = view.findViewById(R.id.beginnerRecView);
+        intermediateRecView = view.findViewById(R.id.intermediateRecView);
+        advancedRecView = view.findViewById(R.id.advancedRecView);
 
 
     }
 
-
-
-
-}
+    }
 
 

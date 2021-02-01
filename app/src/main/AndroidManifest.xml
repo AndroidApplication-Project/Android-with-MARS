@@ -12,6 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CodeWithMars">
+        <activity android:name=".About_Us"/>
+        <activity android:name=".Help" />
         <activity android:name=".UserLogin" />
         <activity android:name=".RegisterUser" />
         <activity android:name=".MainActivity" />
