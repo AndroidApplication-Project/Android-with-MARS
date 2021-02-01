@@ -86,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.documents:
                         Toast.makeText(MainActivity.this, "Documents Selected", Toast.LENGTH_SHORT).show();
+                        Fragment fragment2 = new DocumentsFragment();
+                        moveToFragment(fragment2);
                         break;
 
                     case R.id.quiz:
