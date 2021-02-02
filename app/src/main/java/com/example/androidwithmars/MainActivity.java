@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
@@ -87,14 +88,20 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.documents:
                         Toast.makeText(MainActivity.this, "Documents Selected", Toast.LENGTH_SHORT).show();
+                        Fragment fragment1 = new DocumentsFragment();
+                        moveToFragment(fragment1);
                         break;
 
                     case R.id.quiz:
                         Toast.makeText(MainActivity.this, "Quiz Selected", Toast.LENGTH_SHORT).show();
+                        Fragment fragment2 = new QuizFragment();
+                        moveToFragment(fragment2);
                         break;
 
                     case R.id.notes:
                         Toast.makeText(MainActivity.this, "Notes Selected", Toast.LENGTH_SHORT).show();
+                        Fragment fragment3 = new NotesFragmnet();
+                        moveToFragment(fragment3);
                         break;
 
                     case R.id.about:
@@ -113,6 +120,8 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.videos:
                         Toast.makeText(MainActivity.this, "Videos Selected", Toast.LENGTH_SHORT).show();
+                        Fragment fragment4 = new VideoFragment();
+                        moveToFragment(fragment4);
                         break;
 
                     case R.id.settings:
@@ -138,6 +147,11 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
 
+            private void moveToFragment(Fragment fragment){
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, fragment, fragment.getClass().getSimpleName()).addToBackStack(null).commit();
+
+            }
         });
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

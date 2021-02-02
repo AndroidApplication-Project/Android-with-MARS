@@ -38,7 +38,7 @@
                 android:layout_marginTop="24dp"
                 android:background="@drawable/back"
                 android:fontFamily="monospace"
-                android:text="Code With Mars"
+                android:text="Android With Mars"
                 android:textAlignment="center"
                 android:textColor="#000"
                 android:textSize="17dp"
@@ -55,7 +55,7 @@
                 android:layout_marginBottom="24dp"
                 android:fontFamily="monospace"
                 android:lineHeight="24dp"
-                android:text=" Code With Mars is an Android app developed by gruop of students. Basic idea
+                android:text=" Android With Mars is an Android app developed by gruop of students. Basic idea
 				 behind this app was to provide an opportunity and platform to learn basis of
 android. This app inlcudes basic tutorials and other important information regarding application development."
                 android:textAlignment="center"

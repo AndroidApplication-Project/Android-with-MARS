@@ -13,25 +13,11 @@ import android.view.ViewGroup;
 
 
 public class QuizFragment extends Fragment {
-    private static final String TAG = "MainFragment";
-
-    private RecyclerView beginnerRecView, intermediateRecView, advancedRecView;
-
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_main, container, false);
-
-        initViews(view);
-        return view;
+        return inflater.inflate(R.layout.fragment_quiz, container, false);
     }
-    private void initViews(View view) {
 
-        beginnerRecView = view.findViewById(R.id.beginnerRecView);
-        intermediateRecView = view.findViewById(R.id.intermediateRecView);
-        advancedRecView = view.findViewById(R.id.advancedRecView);
-
-
-    }
 
     }
 
