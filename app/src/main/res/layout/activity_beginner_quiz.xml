@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="Quiz.BeginnerQuizActivity">
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
+
+    <Button
+        android:id="@+id/btnquit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_alignTop="@+id/bottomNavView"
+        android:layout_marginTop="-54dp"
+        android:text="Quit" />
+
+    <Button
+        android:id="@+id/btnanswer3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_alignTop="@+id/bottomNavView"
+        android:layout_marginTop="-103dp"
+        android:text="Java" />
+
+    <Button
+        android:id="@+id/btnanswer2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_above="@+id/btnanswer3"
+        android:layout_marginBottom="104dp"
+        android:text="Kotlin" />
+
+    <Button
+        android:id="@+id/btnanswer1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_above="@+id/btnanswer2"
+        android:layout_marginBottom="7dp"
+        android:text="Swift" />
+    <TextView
+        android:text="00:00"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="24dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/timer"/>
+
+    <TextView
+        android:id="@+id/tvquestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnanswer1"
+        android:layout_below="@+id/timer"
+        android:layout_marginTop="-3dp"
+        android:layout_marginBottom="4dp"
+        android:gravity="center"
+        android:text="Which of the following language is not used in android? Choose one or more options."
+        android:textSize="24dp" />
+
+    <Button
+        android:id="@+id/btnanswer4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnanswer1"
+        android:layout_marginBottom="7dp"
+        android:text="Phython" />
+
+
+
+
+</RelativeLayout>
