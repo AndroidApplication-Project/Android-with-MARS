@@ -17,13 +17,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CodeWithMars">
-<<<<<<< HEAD
         <activity android:name="Quiz.ResultActivity"></activity>
         <activity android:name="Quiz.BeginnerQuizActivity" />
-=======
         <activity android:name=".HomeSetting"></activity>
         <activity android:name=".Setting" />
->>>>>>> 29d16afc3090fbf39adc6eeda6820fe8b1d3504f
         <activity android:name=".About_Us" />
         <activity android:name=".Help" />
         <activity android:name=".UserLogin" />
