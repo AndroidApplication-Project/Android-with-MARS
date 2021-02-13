@@ -20,6 +20,10 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class UserLogin extends AppCompatActivity {
     private EditText mEmail, mPassword;
@@ -55,8 +59,30 @@ public class UserLogin extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+
+
                             Toast.makeText(UserLogin.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                            //to
+
+                           /* FirebaseDatabase.getInstance("https://androidwithmars-default-rtdb.firebaseio.com/").getReference("user")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                            // GlobalVar.currentUser=dataSnapshot.getValue(User.class);
+                                            Intent home=new Intent(UserLogin.this,MainActivity.class);
+                                            startActivity(home);
+                                            finish();
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                        }
+                                    });*/
+                            //to
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
                         } else {
                             Toast.makeText(UserLogin.this, "Error !" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }

@@ -21,7 +21,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.auth.User;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class RegisterUser extends AppCompatActivity {
@@ -52,6 +59,7 @@ public class RegisterUser extends AppCompatActivity {
                 String password = mPassword.getText().toString().trim();
                 String phone = mPhone.getText().toString().trim();
                 String fullName  = mFullName.getText().toString().trim();
+                processinsert();
 
                 if ( TextUtils.isEmpty(email)){
                     mEmail.setError("Enter email");
@@ -75,10 +83,16 @@ public class RegisterUser extends AppCompatActivity {
                 }
 
 
+                // to do
+
+
                 firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
+                            //to do upload user
+
+
 
                             //verify user
                             FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -99,6 +113,7 @@ public class RegisterUser extends AppCompatActivity {
 
                             Toast.makeText(RegisterUser.this, "Profile Created", Toast.LENGTH_SHORT).show();
                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+
                         }else {
                             Toast.makeText(RegisterUser.this, "Error..!!" +
                                           task.getException().getMessage()
@@ -132,5 +147,37 @@ public class RegisterUser extends AppCompatActivity {
 
         signIn = findViewById(R.id.signIn);
         firebaseAuth = FirebaseAuth.getInstance();
+    }
+
+    private void processinsert()
+    {
+        Map<String,Object> map=new HashMap<>();
+        map.put("email",mEmail.getText().toString());
+        map.put("password",mPassword.getText().toString());
+        map.put("name",mFullName.getText().toString());
+        map.put("phone",mPhone.getText().toString());
+
+
+        FirebaseDatabase.getInstance("https://androidwithmars-default-rtdb.firebaseio.com/").getReference().child("user").push()
+                .setValue(map)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        mEmail.setText("");
+                        mPassword.setText("");
+                        mFullName.setText("");
+                        mPhone.setText("");
+
+                        Toast.makeText(getApplicationContext(),"Inserted Successfully",Toast.LENGTH_LONG).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e)
+                    {
+                        Toast.makeText(getApplicationContext(),"Could not insert",Toast.LENGTH_LONG).show();
+                    }
+                });
+
     }
 }

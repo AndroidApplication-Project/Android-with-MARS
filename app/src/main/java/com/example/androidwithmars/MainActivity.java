@@ -126,6 +126,8 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.settings:
                         Toast.makeText(MainActivity.this, "Settings Selected", Toast.LENGTH_SHORT).show();
+                        Intent next = new Intent(MainActivity.this, Setting.class);
+                        startActivity(next);
                         break;
 
                     case R.id.logout: {
