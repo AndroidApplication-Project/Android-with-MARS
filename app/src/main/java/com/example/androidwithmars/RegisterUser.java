@@ -1,8 +1,5 @@
 package com.example.androidwithmars;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -14,6 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -21,15 +21,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.auth.User;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
+
+import IntroSlider.SliderActivity;
 
 public class RegisterUser extends AppCompatActivity {
     private static final String TAG = "RegisterUser";
@@ -47,8 +44,8 @@ public class RegisterUser extends AppCompatActivity {
         initViews();
 
         if (firebaseAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
-            finish();
+            Intent intent = new Intent(RegisterUser.this, SliderActivity.class);
+            startActivity(intent);
 
         }
 
@@ -101,6 +98,8 @@ public class RegisterUser extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(RegisterUser.this, "Verification Email Sent", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(RegisterUser.this, SliderActivity.class);
+                                    startActivity(intent);
 
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
@@ -112,7 +111,8 @@ public class RegisterUser extends AppCompatActivity {
                             });
 
                             Toast.makeText(RegisterUser.this, "Profile Created", Toast.LENGTH_SHORT).show();
-                           startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            Intent intent = new Intent(RegisterUser.this, SliderActivity.class);
+                            startActivity(intent);
 
                         }else {
                             Toast.makeText(RegisterUser.this, "Error..!!" +

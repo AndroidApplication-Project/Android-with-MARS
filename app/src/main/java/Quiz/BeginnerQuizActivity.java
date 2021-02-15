@@ -33,7 +33,7 @@ public class BeginnerQuizActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beginner_quiz);
-        reverseTimer(60,timer);
+        reverseTimer(90,timer);
         updateQuestion();
 
 
@@ -56,7 +56,7 @@ public class BeginnerQuizActivity extends AppCompatActivity  {
             Intent i = new Intent(BeginnerQuizActivity.this,ResultActivity.class);
             i.putExtra("total",String.valueOf(total));
             i.putExtra("correct",String.valueOf(correct));
-            i.putExtra("wrong",String.valueOf(incorrect));
+            i.putExtra("incorrect",String.valueOf(incorrect));
             startActivity(i);
 
         }
@@ -334,7 +334,7 @@ public class BeginnerQuizActivity extends AppCompatActivity  {
                 Intent i = new Intent(BeginnerQuizActivity.this,ResultActivity.class);
                 i.putExtra("total",String.valueOf(total));
                 i.putExtra("correct",String.valueOf(correct));
-                i.putExtra("wrong",String.valueOf(incorrect));
+                i.putExtra("incorrect",String.valueOf(incorrect));
                 startActivity(i);
             }
         }.start();

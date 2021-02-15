@@ -18,65 +18,39 @@
             android:layout_alignParentBottom="true"
             app:menu="@menu/bottom_nav_menu" />
 
-    <TextView
-        android:id="@+id/txtBeginner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:text="Beginner Quiz"
-        android:textSize="16sp"
-        android:textStyle="bold" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/beginnerRecView"
+    <Button
+        android:id="@+id/btnIntermediate"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtBeginner"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp" />
-
-    <TextView
-        android:id="@+id/txtIntermediate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/beginnerRecView"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="75dp"
+        android:layout_above="@+id/bottomNavView"
+        android:layout_marginBottom="327dp"
         android:text="Intermediate Quiz"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:background="#9400D3"
+        android:textColor="@color/black"
+        android:textStyle="italic"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/intermediateRecView"
+    <Button
+        android:id="@+id/btnAdvanced"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtIntermediate"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp" />
-
-
-    <TextView
-        android:id="@+id/txtAdvanced"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/intermediateRecView"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="75dp"
+        android:layout_above="@+id/bottomNavView"
+        android:layout_marginBottom="189dp"
         android:text="Advanced Quiz"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:textColor="@color/black"
+        android:textStyle="italic"
+        android:background="#4B0082"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/advancedRecView"
+    <Button
+        android:id="@+id/btnBeginner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtAdvanced"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp" />
+        android:layout_height="75dp"
+        android:layout_above="@+id/bottomNavView"
+        android:layout_marginBottom="458dp"
+        android:text="Beginner Quiz"
+        android:textColor="@color/black"
+        android:textStyle="italic"
+        android:background="#FFBB86FC"/>
 
 
 </RelativeLayout>

@@ -105,23 +105,30 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.about:
-                    {
-                        Intent next = new Intent(MainActivity.this,About_Us.class);
-                        startActivity(next);
-                    }
-                    break;
+
+                        Toast.makeText(MainActivity.this, "About Us Selected", Toast.LENGTH_SHORT).show();
+                        Fragment fragment4 = new About_Us1();
+                        moveToFragment(fragment4);
+                        break;
 
 
-                    case R.id.help: {
-                        Intent next = new Intent(MainActivity.this, Help.class);
-                        startActivity(next);
-                    }
-                    break;
+
+
+
+                    case R.id.help:
+                        Toast.makeText(MainActivity.this, "Help Selected", Toast.LENGTH_SHORT).show();
+                        Fragment fragment5 = new Help1();
+                        moveToFragment(fragment5);
+                        break;
+
+
+
+
 
                     case R.id.videos:
                         Toast.makeText(MainActivity.this, "Videos Selected", Toast.LENGTH_SHORT).show();
-                        Fragment fragment4 = new VideoFragment();
-                        moveToFragment(fragment4);
+                        Fragment fragment6 = new VideoFragment();
+                        moveToFragment(fragment6);
                         break;
 
                     case R.id.settings:

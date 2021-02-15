@@ -103,4 +103,14 @@
         android:textAlignment="center"
         android:textColor="#4953b1"
         android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/btnHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Return to Home"
+        android:background="@drawable/button_shape"
+        android:textStyle="italic|bold"/>
+
 </LinearLayout>
+
