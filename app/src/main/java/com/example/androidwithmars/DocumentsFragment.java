@@ -1,34 +1,31 @@
 package com.example.androidwithmars;
 
-import android.os.Bundle;
+import android.content.Intent;
 
 import androidx.fragment.app.Fragment;
 
-import android.view.LayoutInflater;
+import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Button;
+
 
 
 public class DocumentsFragment extends Fragment {
 
 
-    Button button;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        button = (Button) findViewById(R.id.button);
+
+        Button button = null;
+        button.findViewById(R.id.button1);
         button.setOnClickListener(new View.OnClickListener() {
-            @Override
             public void onClick(View v) {
-                openNewActivity();
+                Intent i = new Intent(this, ActivityStore.class);
+                startActivity(i);
             }
         });
     }
 
-    public void openNewActivity() {
-        Intent intent = new Intent(this, ActionDetail.class);
-        startActivity(intent);
-    }
+
+
 }

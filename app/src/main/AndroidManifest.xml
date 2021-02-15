@@ -28,7 +28,9 @@
             android:label="Beginner Quiz"/>
         <activity android:name=".HomeSetting"></activity>
         <activity android:name=".Setting" />
-
+        <activity
+            android:name=".ActivityStore"
+            android:label="@string/app_name"/>
         <activity android:name="IntroSlider.SliderActivity"/>
 
         <activity android:name=".UserLogin" />
