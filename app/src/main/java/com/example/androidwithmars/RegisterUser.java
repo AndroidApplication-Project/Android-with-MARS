@@ -26,6 +26,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.Map;
 
+import IntroSlider.SliderActivity;
+
 public class RegisterUser extends AppCompatActivity {
     private static final String TAG = "RegisterUser";
     private EditText mFullName, mEmail, mPassword, mPhone;
@@ -42,8 +44,8 @@ public class RegisterUser extends AppCompatActivity {
         initViews();
 
         if (firebaseAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
-            finish();
+            Intent intent = new Intent(RegisterUser.this, SliderActivity.class);
+            startActivity(intent);
 
         }
 
@@ -96,6 +98,8 @@ public class RegisterUser extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(RegisterUser.this, "Verification Email Sent", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(RegisterUser.this, SliderActivity.class);
+                                    startActivity(intent);
 
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
@@ -108,6 +112,8 @@ public class RegisterUser extends AppCompatActivity {
 
                             Toast.makeText(RegisterUser.this, "Profile Created", Toast.LENGTH_SHORT).show();
                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            Intent intent = new Intent(RegisterUser.this, SliderActivity.class);
+                            startActivity(intent);
 
                         }else {
                             Toast.makeText(RegisterUser.this, "Error..!!" +
