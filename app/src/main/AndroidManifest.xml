@@ -28,7 +28,8 @@
             android:label="Beginner Quiz"/>
         <activity android:name=".HomeSetting"></activity>
         <activity android:name=".Setting" />
-
+        <activity android:name=".About_Us" />
+        <activity android:name=".Help" />
 
         <activity android:name=".UserLogin" />
         <activity android:name=".RegisterUser" />
