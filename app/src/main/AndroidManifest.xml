@@ -24,7 +24,6 @@
         <activity android:name="Quiz.ResultActivity">
         </activity>
 
-
         <activity android:name="Quiz.BeginnerQuizActivity"
             android:label="Beginner Quiz"/>
         <activity android:name=".HomeSetting"></activity>
