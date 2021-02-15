@@ -4,13 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.androidwithmars.MainActivity;
+import com.example.androidwithmars.MainFragment;
 import com.example.androidwithmars.R;
 
 public class ResultActivity extends AppCompatActivity {
     TextView t1_total,t2_correct,t3_incorrect;
     String total,correct,incorrect;
+    Button Home;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +29,16 @@ public class ResultActivity extends AppCompatActivity {
         total = i.getStringExtra("total");
         correct = i.getStringExtra("correct");
         incorrect = i.getStringExtra("incorrect");
+        Home = (Button)findViewById(R.id.btnHome);
+
+        Home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ResultActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         setValues();
     }
