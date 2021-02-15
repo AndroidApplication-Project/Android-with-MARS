@@ -8,8 +8,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
-
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,20 +15,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CodeWithMars">
-
-
-
-        <activity android:name="Quiz.ResultActivity">
-        </activity>
-
-
-        <activity android:name="Quiz.BeginnerQuizActivity"
-            android:label="Beginner Quiz"/>
-        <activity android:name=".HomeSetting"></activity>
+        <activity android:name="IntroSlider.SliderActivity"></activity>
+        <activity android:name="Quiz.ResultActivity" />
+        <activity
+            android:name="Quiz.BeginnerQuizActivity"
+            android:label="Beginner Quiz" />
+        <activity android:name=".HomeSetting" />
         <activity android:name=".Setting" />
-        <activity android:name=".About_Us" />
-        <activity android:name=".Help" />
-
         <activity android:name=".UserLogin" />
         <activity android:name=".RegisterUser" />
         <activity android:name=".MainActivity" />
@@ -41,8 +32,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-            android:theme="@style/Base.Theme.AppCompat"/>
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
     </application>
 
 </manifest>

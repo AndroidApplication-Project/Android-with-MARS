@@ -19,4 +19,9 @@
     <color name="yellow">#FFFF00</color>
     <color name="orange">#FF7F00</color>
     <color name="red">#FF0000</color>
+
+    <color name="color_primary">#262938</color>
+    <color name="color_Primarydark">#181A24</color>
+    <color name="coloraccent">#FF4081</color>
+    <color name="colorTranswhite">#cccccc</color>
 </resources>
