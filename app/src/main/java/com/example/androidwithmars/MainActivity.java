@@ -3,6 +3,7 @@ package com.example.androidwithmars;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -98,23 +99,29 @@ public class MainActivity extends AppCompatActivity {
                         moveToFragment(fragment2);
                         break;
 
-                    case R.id.notes:
-                        Toast.makeText(MainActivity.this, "Notes Selected", Toast.LENGTH_SHORT).show();
-                        Fragment fragment3 = new NotesFragmnet();
-                        moveToFragment(fragment3);
+                    case R.id.notes: {
+                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.container, new Tutorial());
+                        transaction.commit();
+                        drawer.closeDrawer(GravityCompat.START, false);
+                    }
                         break;
 
                     case R.id.about:
                     {
-                        Intent next = new Intent(MainActivity.this,About_Us.class);
-                        startActivity(next);
+                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.container, new About_Us1());
+                        transaction.commit();
+                        drawer.closeDrawer(GravityCompat.START, false);
                     }
                     break;
 
 
                     case R.id.help: {
-                        Intent next = new Intent(MainActivity.this, Help.class);
-                        startActivity(next);
+                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.container, new Help1());
+                        transaction.commit();
+                        drawer.closeDrawer(GravityCompat.START, false);
                     }
                     break;
 
