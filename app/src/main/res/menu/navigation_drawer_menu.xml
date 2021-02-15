@@ -4,7 +4,7 @@
     <item
         android:id="@+id/documents"
         android:icon="@drawable/ic_documents"
-        android:title="Examples" />
+        android:title="Resources" />
 
     <item
         android:id="@+id/quiz"
@@ -14,7 +14,7 @@
     <item
         android:id="@+id/notes"
         android:icon="@drawable/ic_notes"
-        android:title="Notes" />
+        android:title="Documents" />
 
     <item
         android:id="@+id/videos"
