@@ -12,9 +12,23 @@ import android.view.ViewGroup;
 public class DocumentsFragment extends Fragment {
 
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_documents, container, false);
+    Button button;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openNewActivity();
+            }
+        });
+    }
+
+    public void openNewActivity() {
+        Intent intent = new Intent(this, ActionDetail.class);
+        startActivity(intent);
     }
 }
