@@ -99,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
                         moveToFragment(fragment2);
                         break;
 
+
                     case R.id.notes: {
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.container, new Tutorial());
