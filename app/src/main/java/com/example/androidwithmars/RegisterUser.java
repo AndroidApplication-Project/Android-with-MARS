@@ -111,7 +111,6 @@ public class RegisterUser extends AppCompatActivity {
                             });
 
                             Toast.makeText(RegisterUser.this, "Profile Created", Toast.LENGTH_SHORT).show();
-                           startActivity(new Intent(getApplicationContext(),MainActivity.class));
                             Intent intent = new Intent(RegisterUser.this, SliderActivity.class);
                             startActivity(intent);
 
