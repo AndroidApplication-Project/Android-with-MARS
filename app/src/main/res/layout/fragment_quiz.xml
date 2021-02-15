@@ -18,61 +18,39 @@
             android:layout_alignParentBottom="true"
             app:menu="@menu/bottom_nav_menu" />
 
-        <Button
-            android:id="@+id/answer4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_alignTop="@+id/bottomNavView"
-            android:layout_marginTop="-54dp"
-            android:text="Phython" />
 
     <Button
-        android:id="@+id/answer3"
+        android:id="@+id/btnIntermediate"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_alignTop="@+id/bottomNavView"
-        android:layout_marginTop="-103dp"
-        android:text="Java" />
+        android:layout_height="75dp"
+        android:layout_above="@+id/bottomNavView"
+        android:layout_marginBottom="327dp"
+        android:text="Intermediate Quiz"
+        android:background="#9400D3"
+        android:textColor="@color/black"
+        android:textStyle="italic"/>
 
     <Button
-        android:id="@+id/answer2"
+        android:id="@+id/btnAdvanced"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_above="@+id/answer3"
-        android:layout_marginBottom="104dp"
-        android:text="Kotlin" />
+        android:layout_height="75dp"
+        android:layout_above="@+id/bottomNavView"
+        android:layout_marginBottom="189dp"
+        android:text="Advanced Quiz"
+        android:textColor="@color/black"
+        android:textStyle="italic"
+        android:background="#4B0082"/>
 
     <Button
-        android:id="@+id/answer1"
+        android:id="@+id/btnBeginner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_above="@+id/answer2"
-        android:layout_marginBottom="7dp"
-        android:text="Swift" />
-    <TextView
-        android:text="Score = 00"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="24dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/score"/>
-
-    <TextView
-        android:text="Which of the following language is not used in android? Choose one or more options."
-        android:id="@+id/question"
-        android:gravity="center"
-        android:textSize="24dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/answer1"
-        android:layout_below="@+id/score" />
-
+        android:layout_height="75dp"
+        android:layout_above="@+id/bottomNavView"
+        android:layout_marginBottom="458dp"
+        android:text="Beginner Quiz"
+        android:textColor="@color/black"
+        android:textStyle="italic"
+        android:background="#FFBB86FC"/>
 
 
 </RelativeLayout>
