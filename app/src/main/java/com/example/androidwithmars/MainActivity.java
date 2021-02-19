@@ -36,8 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private MaterialToolbar toolbar;
     private FirebaseFirestore firebaseFirestore;
     private FirebaseAuth firebaseAuth;
-    private Button resendCode;
-    private TextView verifyMessage;
+
 
 
     @Override
@@ -48,32 +47,6 @@ public class MainActivity extends AppCompatActivity {
 
         final FirebaseUser user = firebaseAuth.getCurrentUser();
 
-//        if (!Objects.requireNonNull(user).isEmailVerified()) {
-//
-////            verifyMessage.setVisibility(View.VISIBLE);
-////            resendCode.setVisibility(View.VISIBLE);
-//
-//
-////            resendCode.setOnClickListener(new View.OnClickListener() {
-////                @Override
-////                public void onClick(final View v) {
-////                    user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-////                        @Override
-////                        public void onSuccess(Void aVoid) {
-////                            Toast.makeText(v.getContext(), "Verification Email Sent", Toast.LENGTH_SHORT).show();
-////
-////                        }
-////                    }).addOnFailureListener(new OnFailureListener() {
-////                        @Override
-////                        public void onFailure(@NonNull Exception e) {
-////                            Log.d(TAG, "onFailure: Failed" + e.getMessage());
-////
-////                        }
-////                    });
-////                }
-////            });
-//
-//        }
 
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
@@ -122,9 +95,6 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
 
-
-
-
                     case R.id.videos:
                         Toast.makeText(MainActivity.this, "Videos Selected", Toast.LENGTH_SHORT).show();
                         Fragment fragment6 = new VideoFragment();
@@ -159,7 +129,6 @@ public class MainActivity extends AppCompatActivity {
             private void moveToFragment(Fragment fragment){
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.container, fragment, fragment.getClass().getSimpleName()).addToBackStack(null).commit();
-
             }
         });
 
@@ -178,8 +147,6 @@ public class MainActivity extends AppCompatActivity {
         drawer = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.navigationView);
         toolbar = findViewById(R.id.toolbar);
-        resendCode = findViewById(R.id.resendCode);
-        verifyMessage = findViewById(R.id.verifyMessage);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
 

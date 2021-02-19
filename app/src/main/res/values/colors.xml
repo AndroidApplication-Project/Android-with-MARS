@@ -12,6 +12,10 @@
     <color name="colorAccent">#FF4081</color>
 
 
+    <color name="bordercolor">#2196F3</color>
+    <color name="btnbgcolor">#FF9800</color>
+
+
     <color name="violet">#9400D3</color>
     <color name="indigo">#4B0082</color>
     <color name="blue">#0000FF</color>

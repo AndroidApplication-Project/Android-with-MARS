@@ -27,6 +27,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
@@ -42,20 +43,20 @@ import com.karumi.dexter.listener.single.PermissionListener;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class RegisterUser extends AppCompatActivity {
     private static final String TAG = "RegisterUser";
     private EditText mFullName, mEmail, mPassword, mPhone;
-    private ImageView img;
 
-    private Button btnRegister;
+    private ImageView img;
+    private Button btnRegister,browse;
     private TextView signIn;
     private FirebaseAuth firebaseAuth;
-
-    private Button browse, upload;
-
+//    private Button browse;
     private Uri filepath;
     private Bitmap bitmap;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +67,6 @@ public class RegisterUser extends AppCompatActivity {
         if (firebaseAuth.getCurrentUser() != null){
             startActivity(new Intent(getApplicationContext(),MainActivity.class));
             finish();
-
         }
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +76,8 @@ public class RegisterUser extends AppCompatActivity {
                 String password = mPassword.getText().toString().trim();
                 String phone = mPhone.getText().toString().trim();
                 String fullName  = mFullName.getText().toString().trim();
+//                uploadToFireBase();
+
                 processinsert();
 
                 if ( TextUtils.isEmpty(email)){
@@ -99,21 +101,13 @@ public class RegisterUser extends AppCompatActivity {
                     return;
                 }
 
-
-                // to do
-
-
                 firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             //to do upload user
-
-
-
                             //verify user
                             FirebaseUser user = firebaseAuth.getCurrentUser();
-
                             user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
@@ -121,6 +115,7 @@ public class RegisterUser extends AppCompatActivity {
 
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
+
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
                                     Log.d(TAG, "onFailure: Failed"+e.getMessage());
@@ -135,15 +130,11 @@ public class RegisterUser extends AppCompatActivity {
                             Toast.makeText(RegisterUser.this, "Error..!!" +
                                           task.getException().getMessage()
                                     , Toast.LENGTH_LONG).show();
-
-
                         }
                     }
                 });
             }
         });
-
-
 
 
         browse.setOnClickListener(new View.OnClickListener() {
@@ -158,9 +149,7 @@ public class RegisterUser extends AppCompatActivity {
                                 intent.setType("image/*");
                                 startActivityForResult(Intent.createChooser
                                         (intent, "Please select  Image"), 1);
-
                             }
-
                             @Override
                             public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
 
@@ -185,46 +174,75 @@ public class RegisterUser extends AppCompatActivity {
         });
     }
 
-    private void uploadToFireBase() {
-        ProgressDialog dialog = new ProgressDialog(this);
-        dialog.setTitle("File Uploading");
-        dialog.show();
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference uploader = storage.getReference().child("image1");
-        uploader.putFile(filepath)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                        dialog.dismiss();
-                        Toast.makeText(getApplicationContext(), "File Uploaded", Toast.LENGTH_SHORT).show();
-                    }
-                })
-
-                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                        float percent = (100*snapshot.getBytesTransferred())/snapshot.getTotalByteCount();
-                        dialog.setMessage("Uploaded :" +(int)percent+ " % ");
-                    }
-                });
-
-    }
+//    private void uploadToFireBase() {
+//
+//        ProgressDialog dialog = new ProgressDialog(this);
+//        dialog.setTitle("File Uploading");
+//        dialog.show();
+//
+//
+//        mFullName = findViewById(R.id.fullName);
+//        mEmail = findViewById(R.id.userEmail);
+//        mPhone = findViewById(R.id.phone);
+//        mPassword=  findViewById(R.id.password);
+//
+//        FirebaseStorage storage = FirebaseStorage.getInstance();
+//        StorageReference uploader = storage.getReference("Image1"+ new Random().nextInt(50));
+//        uploader.putFile(filepath)
+//                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                    @Override
+//                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//
+//                        uploader.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//                            @Override
+//                            public void onSuccess(Uri uri) {
+//                                dialog.dismiss();
+//                                FirebaseDatabase  db = FirebaseDatabase.getInstance();
+//                                DatabaseReference root =  db.getReference("user");
+//
+//                                DataHolder obj = new DataHolder(mFullName.getText().toString(),
+//                                        mEmail.getText().toString(),
+//                                        mPhone.getText().toString(),
+//                                        uri.toString());
+//                                root.child(mEmail.getText().toString()).setValue(obj);
+//
+//                                Toast.makeText(RegisterUser.this, "Uploaded", Toast.LENGTH_SHORT).show();
+//
+//                            }
+//                        });
+//
+//
+//                    }
+//                })
+//                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+//                    @Override
+//                    public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+//
+//                        float percent = (100*snapshot.getBytesTransferred())/snapshot.getTotalByteCount();
+//                          dialog.setMessage("Uploaded :" +(int)percent+ " % ");
+//
+//                    }
+//                });
+//
+//
+//
+//
+//
+//
+//
+//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == 1 && resultCode == RESULT_OK) {
+
             filepath = data.getData();
             try {
-
                 InputStream inputStream = getContentResolver().openInputStream(filepath);
                 bitmap = BitmapFactory.decodeStream(inputStream);
                 img.setImageBitmap(bitmap);
-
-
-
-            }catch (Exception e){
-
+            }
+            catch (Exception e){
             }
 
 
@@ -233,14 +251,13 @@ public class RegisterUser extends AppCompatActivity {
     }
 
 
-
     private void initViews() {
         mFullName = findViewById(R.id.fullName);
         mEmail = findViewById(R.id.userEmail);
         mPassword = findViewById(R.id.password);
         btnRegister = findViewById(R.id.btnRegister);
 
-        img = findViewById(R.id.uploadImage);
+        img = findViewById(R.id.imageView);
         browse = findViewById(R.id.btnBrowse);
 
 
@@ -250,15 +267,16 @@ public class RegisterUser extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
     }
 
-    private void processinsert()
-    {
+
+    private void processinsert() {
         Map<String,Object> map=new HashMap<>();
         map.put("email",mEmail.getText().toString());
         map.put("password",mPassword.getText().toString());
         map.put("name",mFullName.getText().toString());
         map.put("phone",mPhone.getText().toString());
 
-        uploadToFireBase();
+
+//        uploadToFireBase();
 
 
         FirebaseDatabase.getInstance("https://androidwithmars-default-rtdb.firebaseio.com/").getReference().child("user").push()
