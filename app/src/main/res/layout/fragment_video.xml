@@ -1,354 +1,582 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".VideoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
+        <LinearLayout
+            android:id="@+id/selectDifficultyLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <Button
+
+                android:id="@+id/btnBeginnerVideo"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="60dp"
+                android:padding="7dp"
+                android:text="Beginner" />
+
+            <Button
+                android:id="@+id/btnIntermediateVideo"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="60dp"
+                android:layout_marginBottom="70dp"
+                android:padding="7dp"
+                android:text="Intermediate" />
+
+            <Button
+                android:id="@+id/btnAdvancedVideo"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="60dp"
+               android:layout_marginBottom="30dp"
+                android:padding="7dp"
+                android:text="Advanced" />
+
+
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:id="@+id/beginnerVideos"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=" Installation of Android Studio"
-            android:textStyle="bold"
-            android:textColor="#CC0066"
-            android:textSize="20dp"/>
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            android:padding="4dp">
 
-        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" Installation of Android Studio"
+                android:textColor="#009688"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="false"
+                app:showYouTubeButton="false"
+                app:videoId="EknEIzswvC0" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text=" Basic Overview of an Android App"
+                android:textColor="#009688"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="false"
+                app:showYouTubeButton="false"
+                app:videoId="myjSxtAk9XM" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text=" Android Activity Lifecycle"
+                android:textColor="#009688"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="false"
+                app:showYouTubeButton="false"
+                app:videoId="odqACn2Vgic" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text=" Adding Two Number App"
+                android:textColor="#009688"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="false"
+                app:showYouTubeButton="false"
+                app:videoId="7OQJIaXNmT4" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text=" Android Checboxes Example"
+                android:textColor="#009688"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="false"
+                app:showYouTubeButton="false"
+                app:videoId="HO7CsnUEJAs" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" Android Radio Button"
+                android:textColor="#009688"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="false"
+                app:showYouTubeButton="false"
+                app:videoId="cTlWwuAvRpE" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text=" How to Start new Activity on Button"
+                android:textColor="#009688"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="false"
+                app:showYouTubeButton="false"
+                app:videoId="3f0NAn5xFy4" />
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/intermediateVideos"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:videoId="EknEIzswvC0"
-            app:autoPlay="false"
-            app:showYouTubeButton="false"/>
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            android:padding="4dp">
 
-        <TextView
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text=" Android Login Screen Part 1"
+                android:textColor="#009688"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="false"
+                app:showYouTubeButton="false"
+                app:videoId="PQqEKrr8KSQ" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text=" Android Login Screen Part 2"
+                android:textColor="#009688"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="false"
+                app:showYouTubeButton="false"
+                app:videoId="ihHdHra7zF8" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text=" Android Image View"
+                android:textColor="#009688"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="false"
+                app:showYouTubeButton="false"
+                app:videoId="IgbGeOIPu8w" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text=" Android ListView"
+                android:textColor="#009688"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="false"
+                app:showYouTubeButton="false"
+                app:videoId="DmPO6ZWF8-s" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text=" Android Seekbar"
+                android:textColor="#009688"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="false"
+                app:showYouTubeButton="false"
+                app:videoId="l5FrTkGoeX8" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text=" Android Fragment Part1"
+                android:textColor="#009688"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="false"
+                app:showYouTubeButton="false"
+                app:videoId="mcF28h9WiGQ" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text=" Android Fragment Part2"
+                android:textColor="#009688"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="false"
+                app:showYouTubeButton="false"
+                app:videoId="FF-e6CnBwYY" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text=" Android Sqlite Database Part1"
+                android:textColor="#009688"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="false"
+                app:showYouTubeButton="false"
+                app:videoId="cp2rL3sAFmI" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text=" Android Sqlite Part2"
+                android:textColor="#009688"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="false"
+                app:showYouTubeButton="false"
+                app:videoId="p8TaTgr4uKM" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text=" How to Start new Activity on Button"
+                android:textColor="#009688"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="false"
+                app:showYouTubeButton="false"
+                app:videoId="3f0NAn5xFy4" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text=" Android with JSON"
+                android:textColor="#009688"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="false"
+                app:showYouTubeButton="false"
+                app:videoId="KdweixONFyA" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text=" Add data to Cloud Store"
+                android:textColor="#009688"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="false"
+                app:showYouTubeButton="false"
+                app:videoId="y2op1D0W8oE" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text=" Android Firebase Firestore Masterclass"
+                android:textColor="#009688"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="false"
+                app:showYouTubeButton="false"
+                app:videoId="694YjzL-yKY" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/advancedVideos"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=" Basic Overview of an Android App"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp"
-            android:textColor="#CC0066"
-            android:textSize="20dp"/>
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            android:padding="4dp">
 
-        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:videoId="myjSxtAk9XM"
-            app:autoPlay="false"
-            app:showYouTubeButton="false"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Android Notifications Tutorial Part 1"
+                android:textColor="#009688"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" Android Activity Lifecycle"
-            android:textStyle="bold"
-            android:textColor="#CC0066"
-            android:layout_marginTop="16dp"
-            android:textSize="20dp"/>
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="false"
+                app:showYouTubeButton="false"
+                app:videoId="tTbd1Mfi-Sk" />
 
 
-        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:videoId="odqACn2Vgic"
-            app:autoPlay="false"
-            app:showYouTubeButton="false"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Android Notifications Tutorial Part 2"
+                android:textColor="#009688"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="false"
+                app:showYouTubeButton="false"
+                app:videoId="CZ575BuLBo4" />
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" Adding Two Number App"
-            android:textStyle="bold"
-            android:textColor="#CC0066"
-            android:layout_marginTop="16dp"
-            android:textSize="20dp"/>
-
-        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:videoId="7OQJIaXNmT4"
-            app:autoPlay="false"
-            app:showYouTubeButton="false"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text=" Android  Studio - HandlerThread"
+                android:textColor="#009688"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" Android Checboxes Example"
-            android:textStyle="bold"
-            android:textColor="#CC0066"
-            android:layout_marginTop="16dp"
-            android:textSize="20dp"/>
-
-        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:videoId="HO7CsnUEJAs"
-            app:autoPlay="false"
-            app:showYouTubeButton="false"/>
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="false"
+                app:showYouTubeButton="false"
+                app:videoId="n0mkYSjldeA" />
 
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" Android Radio Button"
-            android:textStyle="bold"
-            android:textColor="#CC0066"
-            android:textSize="20dp"/>
-
-        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:videoId="cTlWwuAvRpE"
-            app:autoPlay="false"
-            app:showYouTubeButton="false"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" How to Start new Activity on Button"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp"
-            android:textColor="#CC0066"
-            android:textSize="20dp"/>
-
-        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:videoId="3f0NAn5xFy4"
-            app:autoPlay="false"
-            app:showYouTubeButton="false"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" Android Login Screen Part1"
-            android:textStyle="bold"
-            android:textColor="#CC0066"
-            android:layout_marginTop="16dp"
-            android:textSize="20dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Android Studio - Build a GPS App"
+                android:textColor="#009688"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
 
-        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:videoId="PQqEKrr8KSQ"
-            app:autoPlay="false"
-            app:showYouTubeButton="false"/>
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" Android Login Screen Part 2"
-            android:textStyle="bold"
-            android:textColor="#CC0066"
-            android:layout_marginTop="16dp"
-            android:textSize="20dp"/>
-
-        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:videoId="ihHdHra7zF8"
-            app:autoPlay="false"
-            app:showYouTubeButton="false"/>
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" Android Image View"
-            android:textStyle="bold"
-            android:textColor="#CC0066"
-            android:layout_marginTop="16dp"
-            android:textSize="20dp"/>
-
-        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:videoId="IgbGeOIPu8w"
-            app:autoPlay="false"
-            app:showYouTubeButton="false"/>
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" Android ListView"
-            android:textStyle="bold"
-            android:textColor="#CC0066"
-            android:layout_marginTop="16dp"
-            android:textSize="20dp"/>
-
-        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:videoId="DmPO6ZWF8-s"
-            app:autoPlay="false"
-            app:showYouTubeButton="false"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" Android Seekbar"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp"
-            android:textColor="#CC0066"
-            android:textSize="20dp"/>
-
-        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:videoId="l5FrTkGoeX8"
-            app:autoPlay="false"
-            app:showYouTubeButton="false"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" Android Fragment Part1"
-            android:textStyle="bold"
-            android:textColor="#CC0066"
-            android:layout_marginTop="16dp"
-            android:textSize="20dp"/>
-
-
-        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:videoId="mcF28h9WiGQ"
-            app:autoPlay="false"
-            app:showYouTubeButton="false"/>
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" Android Fragment Part2"
-            android:textStyle="bold"
-            android:textColor="#CC0066"
-            android:layout_marginTop="16dp"
-            android:textSize="20dp"/>
-
-        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:videoId="FF-e6CnBwYY"
-            app:autoPlay="false"
-            app:showYouTubeButton="false"/>
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" Android Sqlite Database Part1"
-            android:textStyle="bold"
-            android:textColor="#CC0066"
-            android:layout_marginTop="16dp"
-            android:textSize="20dp"/>
-
-        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:videoId="cp2rL3sAFmI"
-            app:autoPlay="false"
-            app:showYouTubeButton="false"/>
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="false"
+                app:showYouTubeButton="false"
+                app:videoId="_xUcYfbtfsI" />
 
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" Android Sqlite Part2"
-            android:textStyle="bold"
-            android:textColor="#CC0066"
-            android:layout_marginTop="16dp"
-            android:textSize="20dp"/>
-
-        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:videoId="p8TaTgr4uKM"
-            app:autoPlay="false"
-            app:showYouTubeButton="false"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" How to Start new Activity on Button"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp"
-            android:textColor="#CC0066"
-            android:textSize="20dp"/>
-
-        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:videoId="3f0NAn5xFy4"
-            app:autoPlay="false"
-            app:showYouTubeButton="false"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" Android with JSON"
-            android:textStyle="bold"
-            android:textColor="#CC0066"
-            android:layout_marginTop="16dp"
-            android:textSize="20dp"/>
 
 
-        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:videoId="KdweixONFyA"
-            app:autoPlay="false"
-            app:showYouTubeButton="false"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Android REST API - Network Data"
+                android:textColor="#009688"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="false"
+                app:showYouTubeButton="false"
+                app:videoId="xPi-z3nOcn8" />
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" Add data to Cloud Store"
-            android:textStyle="bold"
-            android:textColor="#CC0066"
-            android:layout_marginTop="16dp"
-            android:textSize="20dp"/>
-
-        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:videoId="y2op1D0W8oE"
-            app:autoPlay="false"
-            app:showYouTubeButton="false"/>
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" Android Firebase Firestore Masterclass"
-            android:textStyle="bold"
-            android:textColor="#CC0066"
-            android:layout_marginTop="16dp"
-            android:textSize="20dp"/>
-
-        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:videoId="694YjzL-yKY"
-            app:autoPlay="false"
-            app:showYouTubeButton="false"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" Android - SQLite Database "
+                android:textColor="#009688"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
 
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="false"
+                app:showYouTubeButton="false"
+                app:videoId="312RhjfetP8" />
+
+
+
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Android App - WhatsApp Clone"
+                android:textColor="#009688"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="false"
+                app:showYouTubeButton="false"
+                app:videoId="988UZFB0heA" />
+
+
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text=" Android - Instagram Clone App"
+                android:textColor="#009688"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:autoPlay="false"
+                app:showYouTubeButton="false"
+                app:videoId="bRo1HtdZLRQ" />
+
+
+
+
+
+        </LinearLayout>
 
     </LinearLayout>
 

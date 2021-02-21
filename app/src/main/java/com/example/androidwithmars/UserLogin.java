@@ -62,25 +62,6 @@ public class UserLogin extends AppCompatActivity {
 
 
                             Toast.makeText(UserLogin.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                            //to
-
-                           /* FirebaseDatabase.getInstance("https://androidwithmars-default-rtdb.firebaseio.com/").getReference("user")
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    .addListenerForSingleValueEvent(new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                            // GlobalVar.currentUser=dataSnapshot.getValue(User.class);
-                                            Intent home=new Intent(UserLogin.this,MainActivity.class);
-                                            startActivity(home);
-                                            finish();
-                                        }
-
-                                        @Override
-                                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                        }
-                                    });*/
-                            //to
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
                         } else {
@@ -150,4 +131,5 @@ public class UserLogin extends AppCompatActivity {
         mForgotPassword = findViewById(R.id.forgotPassword);
         firebaseAuth = FirebaseAuth.getInstance();
     }
+
 }

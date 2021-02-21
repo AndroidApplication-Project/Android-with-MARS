@@ -1,5 +1,7 @@
 package com.example.androidwithmars;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -10,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -38,6 +41,7 @@ public class MainFragment extends Fragment {
         // TODO: 26/1/21 Complete Later 
         bottomNavigationView.setSelectedItemId(R.id.videos);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @SuppressLint("ResourceType")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
@@ -47,6 +51,10 @@ public class MainFragment extends Fragment {
                         
                     case R.id.videos:
                         Toast.makeText(getActivity(), "Videos Selected", Toast.LENGTH_SHORT).show();
+//                        Fragment fragment6 = new VideoFragment();
+//                        startActivity(fragment6);
+//                        break;
+
                         break;
 
                     case R.id.documents:
@@ -56,11 +64,22 @@ public class MainFragment extends Fragment {
                     default:
                         break;
                 }
-                return false;
-            }
-        });
-    }
 
+
+                return false;
+
+
+            }
+
+//
+
+        });
+
+
+
+
+
+    }
 
     private void initViews(View view) {
 
