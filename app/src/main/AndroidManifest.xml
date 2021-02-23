@@ -21,15 +21,15 @@
 
 
 
-        <activity android:name="Quiz.ResultActivity">
-        </activity>
+<!--        <activity android:name="Quiz.ResultActivity">-->
+<!--        </activity>-->
 
-        <activity android:name="Quiz.BeginnerQuizActivity"
-            android:label="Beginner Quiz"/>
+<!--        <activity android:name="Quiz.BeginnerQuizActivity"-->
+<!--            android:label="Beginner Quiz"/>-->
         <activity android:name=".HomeSetting"></activity>
         <activity android:name=".Setting" />
-        <activity android:name="IntroSlider.SliderActivity"/>
-
+<!--        <activity android:name="IntroSlider.SliderActivity"/>-->
+<activity android:name=".FragmentB1"/>
         <activity android:name=".UserLogin" />
         <activity android:name=".RegisterUser" />
         <activity android:name=".MainActivity" />

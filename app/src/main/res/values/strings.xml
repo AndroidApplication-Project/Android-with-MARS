@@ -6,4 +6,142 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="action_detail">action detail</string>
     <string name="HTI">radio</string>
+    <string name="textview">
+  <![CDATA[
+
+ <TextView
+        android:id="@+id/txtExample"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text=""
+        android:textSize="30dp"
+        android:padding="20dp"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+   ]]>
+</string>
+    <string name="edittext">
+  <![CDATA[
+  <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:inputType="text"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+   ]]>
+</string>
+
+    <string name="button">
+  <![CDATA[
+<Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="109dp"
+        android:text="ADD"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="266dp" />
+   ]]>
+</string><string name="radiobutton">
+  <![CDATA[
+  <RadioButton
+        android:id="@+id/radioButton1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Radio Button 1"
+        android:layout_marginTop="20dp"
+        android:textSize="20dp" />
+   ]]>
+</string><string name="checkbox">
+  <![CDATA[
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="144dp"
+        android:layout_marginTop="68dp"
+        android:text="Pizza"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+   ]]>
+</string><string name="ratingbar">
+  <![CDATA[
+  <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="72dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+   ]]>
+</string><string name="progressbar">
+  <![CDATA[
+
+ProgressDialog progressBar = new ProgressDialog(this);
+progressBar.setCancelable(true);//you can cancel it by pressing back button
+progressBar.setMessage("File downloading ...");
+progressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+progressBar.setProgress(0);//initially progress is 0
+progressBar.setMax(100);//sets the maximum value 100
+progressBar.show();//displays the progress bar
+   ]]>
+</string><string name="seekbar">
+  <![CDATA[
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="372dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+   ]]>
+</string><string name="toggleButton">
+  <![CDATA[
+   <ToggleButton
+        android:id="@+id/toggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="80dp"
+        android:text="ToggleButton"
+        android:textOff="Off"
+        android:textOn="On"
+        app:layout_constraintEnd_toStartOf="@+id/toggleButton2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+   ]]>
+</string><string name="spinner">
+  <![CDATA[
+ <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="149dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498" />
+   ]]>
+</string>
+
 </resources>
