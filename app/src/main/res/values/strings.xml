@@ -51,7 +51,8 @@
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="266dp" />
    ]]>
-</string><string name="radiobutton">
+</string>
+    <string name="radiobutton">
   <![CDATA[
   <RadioButton
         android:id="@+id/radioButton1"
@@ -62,7 +63,8 @@
         android:layout_marginTop="20dp"
         android:textSize="20dp" />
    ]]>
-</string><string name="checkbox">
+</string>
+    <string name="checkbox">
   <![CDATA[
     <CheckBox
         android:id="@+id/checkBox"
@@ -74,7 +76,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
    ]]>
-</string><string name="ratingbar">
+</string>
+    <string name="ratingbar">
   <![CDATA[
   <RatingBar
         android:id="@+id/ratingBar"
@@ -85,7 +88,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
    ]]>
-</string><string name="progressbar">
+</string>
+    <string name="progressbar">
   <![CDATA[
 
 ProgressDialog progressBar = new ProgressDialog(this);
@@ -96,7 +100,8 @@ progressBar.setProgress(0);//initially progress is 0
 progressBar.setMax(100);//sets the maximum value 100
 progressBar.show();//displays the progress bar
    ]]>
-</string><string name="seekbar">
+</string>
+    <string name="seekbar">
   <![CDATA[
     <SeekBar
         android:id="@+id/seekBar"
@@ -109,7 +114,8 @@ progressBar.show();//displays the progress bar
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
    ]]>
-</string><string name="toggleButton">
+</string>
+    <string name="toggleButton">
   <![CDATA[
    <ToggleButton
         android:id="@+id/toggleButton"
@@ -125,7 +131,8 @@ progressBar.show();//displays the progress bar
         app:layout_constraintTop_toTopOf="parent" />
 
    ]]>
-</string><string name="spinner">
+</string>
+    <string name="spinner">
   <![CDATA[
  <Spinner
         android:id="@+id/spinner"
