@@ -15,8 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CodeWithMars">
-        <activity android:name=".InterviewQuestion"></activity>
-        <!-- <activity android:name="Quiz.ResultActivity"> -->
+        <activity android:name="Quiz.AdvancedQuizActivity"></activity>
+        <activity android:name="Quiz.InterMediateQuizActivity" />
+        <activity android:name=".InterviewQuestion" /> <!-- <activity android:name="Quiz.ResultActivity"> -->
         <!-- </activity> -->
         <!-- <activity android:name="Quiz.BeginnerQuizActivity" -->
         <!-- android:label="Beginner Quiz"/> -->
