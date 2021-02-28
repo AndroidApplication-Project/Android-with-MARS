@@ -102,8 +102,8 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.settings:
-                        Toast.makeText(MainActivity.this, "Settings Selected", Toast.LENGTH_SHORT).show();
-                        Intent next = new Intent(MainActivity.this, Setting.class);
+                        Toast.makeText(MainActivity.this, "Interview Question  Selected", Toast.LENGTH_SHORT).show();
+                        Intent next = new Intent(MainActivity.this, InterviewQuestion.class);
                         startActivity(next);
                         break;
 
