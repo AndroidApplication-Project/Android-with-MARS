@@ -75,10 +75,11 @@ public class RegisterUser extends AppCompatActivity {
                 String email = mEmail.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
                 String phone = mPhone.getText().toString().trim();
-                String fullName  = mFullName.getText().toString().trim();
+                String name  = mFullName.getText().toString().trim();
 //                uploadToFireBase();
 
-                processinsert();
+
+                //processinsert();
 
                 if ( TextUtils.isEmpty(email)){
                     mEmail.setError("Enter email");
@@ -92,7 +93,7 @@ public class RegisterUser extends AppCompatActivity {
                     mPassword.setError("Enter Phone");
                     return;
                 }
-                if ( TextUtils.isEmpty(fullName)){
+                if ( TextUtils.isEmpty(name)){
                     mPassword.setError("Enter Full Name");
                     return;
                 }
@@ -106,6 +107,14 @@ public class RegisterUser extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             //to do upload user
+                            User user1=new User(email,name,password,phone);
+                            FirebaseDatabase.getInstance().getReference("user").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                    .setValue(user1).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+
+                                }
+                            });
                             //verify user
                             FirebaseUser user = firebaseAuth.getCurrentUser();
                             user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -265,10 +274,11 @@ public class RegisterUser extends AppCompatActivity {
 
         signIn = findViewById(R.id.signIn);
         firebaseAuth = FirebaseAuth.getInstance();
+
     }
 
 
-    private void processinsert() {
+   /* private void processinsert() {
         Map<String,Object> map=new HashMap<>();
         map.put("email",mEmail.getText().toString());
         map.put("password",mPassword.getText().toString());
@@ -277,7 +287,6 @@ public class RegisterUser extends AppCompatActivity {
 
 
 //        uploadToFireBase();
-
 
         FirebaseDatabase.getInstance("https://androidwithmars-default-rtdb.firebaseio.com/").getReference().child("user").push()
                 .setValue(map)
@@ -300,5 +309,5 @@ public class RegisterUser extends AppCompatActivity {
                     }
                 });
 
-    }
+    }*/
 }

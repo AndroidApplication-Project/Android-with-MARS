@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,10 +51,14 @@ public class Setting extends AppCompatActivity {
     private StorageTask uploadTask;
     private StorageReference storageProfilePicsRef;
 
-    private TextView profileChangeBtn;
-    private EditText edtName,edtPhone,edtEmail,edtPassword;
+    private  TextView profileChangeBtn;
+   //private EditText edtName,edtPhone,edtEmail,edtPassword;
 
 
+   /* TextView edtNamee;
+    TextView edtPhonee;
+    TextView edtEmaill;
+    TextView edtPasswordd;*/
 
 
 
@@ -63,27 +68,87 @@ public class Setting extends AppCompatActivity {
         setContentView(R.layout.activity_setting);
 
 
-       firebaseAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance("https://androidwithmars-default-rtdb.firebaseio.com/").getReference().child("user");
-        storageProfilePicsRef = FirebaseStorage.getInstance().getReference().child("Profile Pic");
+       user = FirebaseAuth.getInstance().getCurrentUser();
 
-        profileImageView = findViewById(R.id.profile_image);
+        //Log.d("user Test ----->",user.toString()); //works
+        databaseReference = FirebaseDatabase.getInstance().getReference("user");
+        userID=user.getUid();
+        /*Log.d("db Test ---->",databaseReference.toString()); //works
+        userID=user.getUid();
+        Log.d("id Test------->",user.getUid()); // id different than doc id in DB
+        //Log.d("id2 Test------>",user.getTenantId()); //fail
+        Log.d("id3 Test------>",user.getDisplayName()); //no output
+        Log.d("id4 Test------>",user.getProviderId()); // work OP -> firebase
+        Log.d("id5 test------->",user.zzg());*/
+
+
+       // profileImageView = findViewById(R.id.profile_image);
 
         closeButton = findViewById(R.id.btnClose);
         saveButton = findViewById(R.id.btnSave);
-       /* edtName = findViewById(R.id.edt_name);
-        edtPhone = findViewById(R.id.phone_number);
-        edtEmail = findViewById(R.id.email_id);
-        edtPassword = findViewById(R.id.edt_password    );*/
+       final EditText edtNamee = findViewById(R.id.edt_name);
+        final EditText edtPhonee = findViewById(R.id.phone_number);
+        final EditText edtEmaill = findViewById(R.id.email_id);
+        final EditText edtPasswordd = findViewById(R.id.edt_password );
 
-        profileChangeBtn = findViewById(R.id.change_profile_btn);
+        databaseReference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User  userProfile =snapshot.getValue(User.class);
 
+                if( userProfile!=null)
+                {
+                    String email=userProfile.email;
+                    String name= userProfile.name;
+                    String password=userProfile.password;
+                    String phone=userProfile.phone;
 
+                    edtEmaill.setText(email);
+                    edtNamee.setText(name);
+                    edtPasswordd.setText(password);
+                    edtPhonee.setText(phone);
 
+                }
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+        /*
+       final TextView edtNamee = findViewById(R.id.edt_name);
+        final TextView edtPhonee = findViewById(R.id.phone_number);
+        final TextView edtEmaill = findViewById(R.id.email_id);
+        final TextView edtPasswordd = findViewById(R.id.edt_password );*/
+        /*
+        databaseReference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Log.d("snapshot Test------->",snapshot.toString()); // @snapshot empty Null value
+                User userProfile=snapshot.getValue(User.class); // null value
+                Log.d("userProf Test------->",userProfile.toString()); // Fail
+                if(userProfile!=null){
+                    String email=userProfile.email;
+                    String name=userProfile.name;
+                    String password=userProfile.password;
+                    String phonenum=userProfile.phone;
 
+                    edtEmaill.setText(email);
+                    edtNamee.setText(name);
+                    edtPasswordd.setText(password);
+                    edtPhonee.setText(phonenum);
+                }
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(Setting.this,"Something wrong",Toast.LENGTH_SHORT).show();
+
+            }
+        });
+*/
+        // updateData();
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,65 +159,98 @@ public class Setting extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validateAndsave();
+
+              updateData();
             }
         });
 
-        profileChangeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                user=FirebaseAuth.getInstance().getCurrentUser();
-                databaseReference=FirebaseDatabase.getInstance("https://androidwithmars-default-rtdb.firebaseio.com/").getReference().child("user");
-                userID=user.getUid();
-              /*  databaseReference.child(firebaseAuth.getCurrentUser().getUid())*/
-
-                edtName = findViewById(R.id.edt_name);
-                edtPhone = findViewById(R.id.phone_number);
-                edtEmail = findViewById(R.id.email_id);
-                edtPassword = findViewById(R.id.edt_password);
-                databaseReference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        //if (dataSnapshot.exists() && dataSnapshot.getChildrenCount() > 0)
 
 
-                            String email = dataSnapshot.child("email").getValue().toString();
-                            String name = dataSnapshot.child("name").getValue().toString();
-                            String  password = dataSnapshot.child("password").getValue().toString();
-                            String  phone = dataSnapshot.child("phone").getValue().toString();
-
-
-                            edtEmail.setText(email);
-                            edtName.setText(name);
-                            edtPassword.setText(password);
-                            edtPhone.setText(phone);
-
-
-                            if (dataSnapshot.hasChild("image"))
-                            {
-                                String image = dataSnapshot.child("image").getValue().toString();
-                                Picasso.get().load(image).into(profileImageView);
-                            }
-
-
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-
-               // CropImage.activity().setAspectRatio(1,1).start(Setting.this);
-            }
-        });
-
-       // getUserinfo();
 
     }
 
-    private void validateAndsave() {
-        if (TextUtils.isEmpty(edtName.getText().toString()))
+    private void updateData()
+    {
+
+        databaseReference.child("user").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+              //  Log.d("snapshot Test------->",snapshot.toString()); // @snapshot empty Null value
+                User userProfile=(User) snapshot.getValue(User.class); // null value
+
+                final EditText edtNamee = findViewById(R.id.edt_name);
+                final EditText edtPhonee = findViewById(R.id.phone_number);
+                final EditText edtEmaill = findViewById(R.id.email_id);
+                final EditText edtPasswordd = findViewById(R.id.edt_password );
+                //Log.d("userProf Test------->",userProfile.toString()); // Fail
+                if(userProfile!=null){
+                    String email=userProfile.getEmail();
+                    String name=userProfile.getName();
+                    String password=userProfile.getPassword();
+                    String phonenum=userProfile.getPhone();
+
+                    /*edtEmaill.setText(email);
+                    edtNamee.setText(name);
+                    edtPasswordd.setText(password);
+                    edtPhonee.setText(phonenum);*/
+
+                    HashMap<String,Object> userMap = new HashMap<>();
+
+                    userMap.put("email",edtEmaill.getText().toString());
+                    userMap.put("name",edtNamee.getText().toString());
+                    userMap.put("password",edtPasswordd.getText().toString());
+                    userMap.put("phone",edtPhonee.getText().toString());
+
+
+
+
+                  //  FirebaseDatabase.getInstance().getReference().child("user");
+
+
+                    databaseReference.child(firebaseAuth.getCurrentUser().getUid()).updateChildren(userMap);
+
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(Setting.this,"Something wrong",Toast.LENGTH_SHORT).show();
+
+            }
+        });
+/*
+        databaseReference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Log.d("snapshot Test------->",snapshot.toString()); // @snapshot empty Null value
+                User userProfile=(User) snapshot.getValue(User.class); // null value
+                Log.d("userProf Test------->",userProfile.toString()); // Fail
+                if(userProfile!=null){
+                    String email=userProfile.email;
+                    String name=userProfile.name;
+                    String password=userProfile.password;
+                    String phonenum=userProfile.phone;
+
+                    edtEmaill.setText(email);
+                    edtNamee.setText(name);
+                    edtPasswordd.setText(password);
+                    edtPhonee.setText(phonenum);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(Setting.this,"Something wrong",Toast.LENGTH_SHORT).show();
+
+            }
+        });*/
+
+    }
+
+    /*private void validateAndsave() {
+      /*  if (TextUtils.isEmpty(edtName.getText().toString()))
         {
             Toast.makeText(this, "Please Enter Your Name", Toast.LENGTH_SHORT).show();
         }else if (TextUtils.isEmpty(edtPhone.getText().toString()))
@@ -169,51 +267,24 @@ public class Setting extends AppCompatActivity {
         }
         else {
             HashMap<String,Object> userMap = new HashMap<>();
+
+            userMap.put("email",edt.getText().toString());
             userMap.put("name",edtName.getText().toString());
-            userMap.put("phone",edtPhone.getText().toString());
-            userMap.put("email",edtEmail.getText().toString());
             userMap.put("password",edtPassword.getText().toString());
+            userMap.put("phone",edtPhone.getText().toString());
+
+
+
+
+            FirebaseDatabase.getInstance().getReference().child("user");
 
             databaseReference.child(firebaseAuth.getCurrentUser().getUid()).updateChildren(userMap);
 
-            uploadProfileImage();
-        }
-    }
+            //uploadProfileImage();
 
-
-  /*  private void getUserinfo() {
-        databaseReference.child(firebaseAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists() && dataSnapshot.getChildrenCount() > 0)
-                {
-                    String email = dataSnapshot.child("email").getValue().toString();
-                    String  password = dataSnapshot.child("password").getValue().toString();
-                    String name = dataSnapshot.child("name").getValue().toString();
-                    String  phone = dataSnapshot.child("phone").getValue().toString();
-
-
-                    edtEmail.setText(email);
-                    edtPassword.setText(password);
-                    edtName.setText(name);
-                    edtPhone.setText(phone);
-
-
-                    if (dataSnapshot.hasChild("image"))
-                    {
-                        String image = dataSnapshot.child("image").getValue().toString();
-                        Picasso.get().load(image).into(profileImageView);
-                    }
-                }
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
     }*/
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
