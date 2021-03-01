@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D6EBF4"
-    tools:context=".MainActivity">
+    tools:context=".SplashActivity2">
     <ImageView
         android:id="@+id/logo"
         android:layout_width="200dp"
@@ -23,16 +22,6 @@
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         android:textStyle="bold"/>
-
-    <com.airbnb.lottie.LottieAnimationView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_below="@+id/name_of_App"
-        android:layout_marginTop="40dp"
-        app:lottie_autoPlay="true"
-        app:lottie_fileName="tick.json"
-        app:lottie_loop="true"
-        android:layout_centerHorizontal="true"/>
 
 
 </RelativeLayout>
