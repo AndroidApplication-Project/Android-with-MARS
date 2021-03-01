@@ -51,7 +51,7 @@ public class BeginnerQuizActivity extends AppCompatActivity  {
         computerCount++;
 
 
-        if(computerCount>5)
+        if(computerCount>10)
         {
             Intent i = new Intent(BeginnerQuizActivity.this,ResultActivity.class);
             i.putExtra("total",String.valueOf(total));
@@ -62,7 +62,7 @@ public class BeginnerQuizActivity extends AppCompatActivity  {
         }
         else
         {
-            reference = FirebaseDatabase.getInstance().getReference().child("Questions").child(String.valueOf(computerCount));
+            reference = FirebaseDatabase.getInstance().getReference().child("Questions/Beginner").child(String.valueOf(computerCount));
             total++;
             reference.addValueEventListener(new ValueEventListener() {
                 @Override

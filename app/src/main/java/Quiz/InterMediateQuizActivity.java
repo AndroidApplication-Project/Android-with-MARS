@@ -63,7 +63,7 @@ public class InterMediateQuizActivity extends AppCompatActivity {
         }
         else
         {
-            reference = FirebaseDatabase.getInstance().getReference().child("Questions").child(String.valueOf(computerCount));
+            reference = FirebaseDatabase.getInstance().getReference().child("Questions/Intermediate").child(String.valueOf(computerCount));
             total++;
             reference.addValueEventListener(new ValueEventListener() {
                 @Override
