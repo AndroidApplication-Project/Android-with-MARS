@@ -1,60 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".QuizFragment"
-    android:paddingBottom="16dp"
+    android:background="@drawable/bg1"
     android:paddingLeft="16dp"
-    android:paddingTop="16dp"
-    android:paddingRight="16dp">
-
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            app:menu="@menu/bottom_nav_menu" />
+    android:paddingTop="0dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="8dp"
+    tools:context=".QuizFragment">
 
 
     <Button
         android:id="@+id/btnIntermediate"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:layout_above="@+id/bottomNavView"
-        android:layout_marginBottom="327dp"
-        android:text="Intermediate Quiz"
-        android:background="#9400D3"
-        android:textColor="@color/black"
-        android:textStyle="italic"/>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="38dp"
+        android:background="@drawable/back7"
+        android:drawableTop="@drawable/lv22"
+        android:drawablePadding="14dp"
+        android:padding="7dp"
+        android:text="Intermediate"
+        android:textColor="#000"
+        android:textSize="18dp"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toTopOf="@+id/btnAdvanced"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBeginner" />
 
     <Button
         android:id="@+id/btnAdvanced"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:layout_above="@+id/bottomNavView"
-        android:layout_marginBottom="189dp"
-        android:text="Advanced Quiz"
-        android:textColor="@color/black"
-        android:textStyle="italic"
-        android:background="#4B0082"/>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/back7"
+        android:drawableTop="@drawable/lv33"
+        android:drawablePadding="14dp"
+        android:padding="7dp"
+        android:text="Advanced"
+        android:textColor="#000"
+        android:textSize="18dp"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnIntermediate" />
 
     <Button
         android:id="@+id/btnBeginner"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:layout_above="@+id/bottomNavView"
-        android:layout_marginBottom="458dp"
-        android:text="Beginner Quiz"
-        android:textColor="@color/black"
-        android:textStyle="italic"
-        android:background="#FFBB86FC"/>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="38dp"
+
+        android:background="@drawable/back7"
+        android:drawableTop="@drawable/lv11"
+        android:drawablePadding="14dp"
+        android:padding="7dp"
+        android:text="Beginner"
+        android:textColor="#000"
+        android:textSize="18dp"
+
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toTopOf="@+id/btnIntermediate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/quizz"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-</RelativeLayout>
-
-
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 

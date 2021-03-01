@@ -17,7 +17,7 @@
         android:id="@+id/linear_layout">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/parentTitle"
             android:padding="16dp"
@@ -41,6 +41,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/api_answer"
                 android:padding="16dp"
+                android:background="#009999"
                 android:text="Ans:"
                 android:textColor="@color/black"
                 android:textStyle="bold"/>
