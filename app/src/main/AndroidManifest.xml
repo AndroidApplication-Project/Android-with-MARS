@@ -29,7 +29,9 @@
         <activity android:name=".UserLogin" />
         <activity android:name=".RegisterUser" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".ReadTopic"></activity>
         <activity android:name=".SplashScreenActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

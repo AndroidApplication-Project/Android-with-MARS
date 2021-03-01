@@ -17,6 +17,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import Quiz.BeginnerQuizActivity;
+import Quiz.InterMediateQuizActivity;
 
 
 public class QuizFragment extends Fragment {
@@ -36,6 +37,14 @@ public class QuizFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(v.getContext(), BeginnerQuizActivity.class);
+                v.getContext().startActivity(intent);
+            }
+        });
+        Button Intermediate = (Button) v.findViewById(R.id.btnIntermediate);
+        Intermediate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(v.getContext(), InterMediateQuizActivity.class);
                 v.getContext().startActivity(intent);
             }
         });

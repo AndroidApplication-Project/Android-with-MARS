@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Documents Selected", Toast.LENGTH_SHORT).show();
                         Fragment fragment1 = new DocumentsFragment();
                         moveToFragment(fragment1);
-                        break;
+                      break;
 
                     case R.id.quiz:
                         Toast.makeText(MainActivity.this, "Quiz Selected", Toast.LENGTH_SHORT).show();
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                         moveToFragment(fragment6);
                         break;
 
-                    case R.id.settings:
+                    case R.id.setting:
                         Toast.makeText(MainActivity.this, "Interview Question  Selected", Toast.LENGTH_SHORT).show();
                         Intent next = new Intent(MainActivity.this, InterviewQuestion.class);
                         startActivity(next);

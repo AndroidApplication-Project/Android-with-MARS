@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.util.Random;
 
 import com.example.androidwithmars.R;
 import com.google.firebase.database.DataSnapshot;
@@ -21,8 +22,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class BeginnerQuizActivity extends AppCompatActivity  {
-    Button ButtonAnswer1, ButtonAnswer2, ButtonAnswer3, ButtonAnswer4;
+    Button ButtonAnswer1, ButtonAnswer2, ButtonAnswer3, ButtonAnswer4,endQuiz;
     TextView tvquestion, timer;
+
     int total = 0;
     int correct = 0;
     int incorrect = 0;
@@ -37,6 +39,7 @@ public class BeginnerQuizActivity extends AppCompatActivity  {
         updateQuestion();
 
 
+
         timer = (TextView) findViewById(R.id.timer);
         tvquestion = (TextView) findViewById(R.id.tvquestion);
 
@@ -44,6 +47,18 @@ public class BeginnerQuizActivity extends AppCompatActivity  {
         ButtonAnswer2 = (Button) findViewById(R.id.btnanswer2);
         ButtonAnswer3 = (Button) findViewById(R.id.btnanswer3);
         ButtonAnswer4 = (Button) findViewById(R.id.btnanswer4);
+        endQuiz  = (Button) findViewById(R.id.endQuiz);
+        endQuiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"Quiz Ended",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(BeginnerQuizActivity.this,ResultActivity.class);
+                intent.putExtra("total",String.valueOf(total));
+                intent.putExtra("correct",String.valueOf(correct));
+                intent.putExtra("incorrect",String.valueOf(incorrect));
+                startActivity(intent);
+            }
+        });
 
 
     }

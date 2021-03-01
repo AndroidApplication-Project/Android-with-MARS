@@ -122,7 +122,7 @@ public class Tutorial extends Fragment {
                 @Override
                 public void onClick(View view) {
 
-                    Intent next = new Intent(getContext(),ReadTopic.class);
+                    Intent next = new Intent(v.getContext(),ReadTopic.class);
                     //send link via intent to another activity
                     next.putExtra("link",topiclink1.get(position));
                     startActivity(next);

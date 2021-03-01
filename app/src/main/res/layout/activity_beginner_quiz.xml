@@ -25,7 +25,6 @@
         android:layout_marginRight="16dp"
         android:gravity="center"
         android:text="Java"
-        android:background="@drawable/back12"
         android:textStyle="italic|bold" />
 
     <Button
@@ -39,7 +38,6 @@
         android:layout_marginBottom="104dp"
         android:gravity="center"
         android:text="Kotlin"
-        android:background="@drawable/back12"
         android:textStyle="italic|bold" />
 
     <Button
@@ -50,7 +48,6 @@
         android:layout_above="@+id/btnanswer2"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:background="@drawable/back12"
         android:layout_marginBottom="7dp"
         android:gravity="center"
         android:text="Swift"
@@ -61,7 +58,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
+        android:layout_marginTop="61dp"
         android:gravity="center"
         android:text="00:00"
         android:textColor="@color/white"
@@ -92,8 +89,15 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="7dp"
         android:text="Phython"
-        android:background="@drawable/back12"
         android:textStyle="italic|bold"/>
+
+    <Button
+        android:id="@+id/endQuiz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="8dp"
+        android:text="End Quiz" />
 
 
 </RelativeLayout>
