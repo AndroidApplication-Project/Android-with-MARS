@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/documents"
-        android:icon="@drawable/ic_documents"
-        android:title="Examples" />
+        android:id="@+id/setting"
+        android:icon="@drawable/ic_settings"
+        android:title="Setting" />
 
     <item
         android:id="@+id/quiz"
