@@ -24,6 +24,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.slider.Slider;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -44,6 +45,8 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+
+import IntroSlider.SliderActivity;
 
 public class RegisterUser extends AppCompatActivity {
     private static final String TAG = "RegisterUser";
@@ -133,7 +136,7 @@ public class RegisterUser extends AppCompatActivity {
                             });
 
                             Toast.makeText(RegisterUser.this, "Profile Created", Toast.LENGTH_SHORT).show();
-                           startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                           startActivity(new Intent(getApplicationContext(), SliderActivity.class));
 
                         }else {
                             Toast.makeText(RegisterUser.this, "Error..!!" +

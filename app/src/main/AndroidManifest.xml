@@ -14,7 +14,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CodeWithMars">
+        android:theme="@style/Theme.CodeWithMars"
+        android:name="androidx.multidex.MultiDexApplication">
         <activity
             android:name="Quiz.BeginnerQuizActivity"
             android:label="Beginner Quiz" />

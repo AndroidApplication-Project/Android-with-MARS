@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D6EBF4"
+    tools:context=".MainActivity">
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/logo3"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="50dp"/>
+    <TextView
+        android:id="@+id/name_of_App"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AndroidWithMARS"
+        android:textSize="18sp"
+        android:layout_below="@+id/logo"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/name_of_App"
+        android:layout_marginTop="40dp"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="tick.json"
+        app:lottie_loop="true"
+        android:layout_centerHorizontal="true"/>
+
+
+</RelativeLayout>
