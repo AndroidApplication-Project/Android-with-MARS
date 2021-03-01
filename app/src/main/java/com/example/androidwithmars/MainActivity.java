@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                         moveToFragment(fragment6);
                         break;
 
-                    case R.id.settings:
+                    case R.id.InterviewQuestion:
                         Toast.makeText(MainActivity.this, "Interview Question  Selected", Toast.LENGTH_SHORT).show();
                         Intent next = new Intent(MainActivity.this, InterviewQuestion.class);
                         startActivity(next);
