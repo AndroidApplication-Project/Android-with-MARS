@@ -59,54 +59,34 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.documents:
-                        Toast.makeText(MainActivity.this, "Documents Selected", Toast.LENGTH_SHORT).show();
-                        Fragment fragment1 = new DocumentsFragment();
-                        moveToFragment(fragment1);
-                        break;
 
-                    case R.id.quiz:
-                        Toast.makeText(MainActivity.this, "Quiz Selected", Toast.LENGTH_SHORT).show();
-                        Fragment fragment2 = new QuizFragment();
-                        moveToFragment(fragment2);
-                        break;
 
-                    case R.id.notes:
-                        Toast.makeText(MainActivity.this, "Notes Selected", Toast.LENGTH_SHORT).show();
-                        Fragment fragment3 = new NotesFragmnet();
-                        moveToFragment(fragment3);
-                        break;
 
-                    case R.id.about:
 
+
+                    case R.id.about: {
                         Toast.makeText(MainActivity.this, "About Us Selected", Toast.LENGTH_SHORT).show();
                         Fragment fragment4 = new About_Us1();
                         moveToFragment(fragment4);
                         break;
+                    }
 
 
 
 
-
-                    case R.id.help:
+                    case R.id.help: {
                         Toast.makeText(MainActivity.this, "Help Selected", Toast.LENGTH_SHORT).show();
                         Fragment fragment5 = new Help1();
                         moveToFragment(fragment5);
                         break;
+                    }
 
-
-                    case R.id.videos:
-                        Toast.makeText(MainActivity.this, "Videos Selected", Toast.LENGTH_SHORT).show();
-                        Fragment fragment6 = new VideoFragment();
-                        moveToFragment(fragment6);
-                        break;
-
-                    case R.id.settings:
-                        Toast.makeText(MainActivity.this, "Interview Question  Selected", Toast.LENGTH_SHORT).show();
-                        Intent next = new Intent(MainActivity.this, InterviewQuestion.class);
+                    case R.id.settings: {
+                        Toast.makeText(MainActivity.this, "Settings Selected", Toast.LENGTH_SHORT).show();
+                        Intent next = new Intent(MainActivity.this, Setting.class);
                         startActivity(next);
                         break;
-
+                    }
                     case R.id.logout: {
 
 //                        Toast.makeText(MainActivity.this, "Logout  Selected", Toast.LENGTH_SHORT).show();

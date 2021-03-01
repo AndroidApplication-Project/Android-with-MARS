@@ -14,8 +14,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -25,6 +27,17 @@ public class MainFragment extends Fragment {
     private BottomNavigationView bottomNavigationView;
 
     private RecyclerView beginnerRecView, intermediateRecView, advancedRecView;
+    //This is our tablayout
+    private TabLayout tabLayout;
+
+    //This is our viewPager
+    private ViewPager viewPager;
+
+    ViewPagerAdapter adapter;
+
+    Tutorial1 frag1;
+    VideoFragment frag2;
+    QuizFragment frag3;
 
     @Nullable
     @Override
@@ -33,61 +46,67 @@ public class MainFragment extends Fragment {
 
         initViews(view);
 
-        initBottomNavView();
-        return view;
-    }
+        viewPager = (ViewPager)view.findViewById(R.id.viewpager);
 
-    private void initBottomNavView() {
-        // TODO: 26/1/21 Complete Later 
-        bottomNavigationView.setSelectedItemId(R.id.videos);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @SuppressLint("ResourceType")
+        viewPager.setOffscreenPageLimit(2);
+
+        setupViewPager(viewPager);
+        //Initializing the tablayout
+        tabLayout = (TabLayout)view.findViewById(R.id.tablayout);
+
+        TabLayout.Tab tab = tabLayout.getTabAt(0);
+        tab.select();
+
+        viewPager.setCurrentItem(0,true);
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.search:
-                        Toast.makeText(getActivity(), "Search Selected", Toast.LENGTH_SHORT).show();
-                        break;
-                        
-                    case R.id.videos:
-                        Toast.makeText(getActivity(), "Videos Selected", Toast.LENGTH_SHORT).show();
-//                        Fragment fragment6 = new VideoFragment();
-//                        startActivity(fragment6);
-//                        break;
+            public void onPageScrolled(int i, float v, int i1) {
 
-                        break;
-
-                    case R.id.documents:
-                        Toast.makeText(getActivity(), "Documents Selected", Toast.LENGTH_SHORT).show();
-                        break;
-
-                    default:
-                        break;
-                }
-
-
-                return false;
 
 
             }
 
-//
+            @Override
+            public void onPageSelected(int i) {
 
+                tabLayout.getTabAt(i).select();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
         });
 
+        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
 
-
-
-
+        return view;
     }
 
+
+
     private void initViews(View view) {
+    }
 
-        bottomNavigationView = view.findViewById(R.id.bottomNavView);
-        beginnerRecView = view.findViewById(R.id.beginnerRecView);
-        intermediateRecView = view.findViewById(R.id.intermediateRecView);
-        advancedRecView = view.findViewById(R.id.advancedRecView);
+    private void setupViewPager(ViewPager viewPager)
+    {
+        adapter = new ViewPagerAdapter(getChildFragmentManager());
 
+        frag1  = new Tutorial1();
+        frag2  = new VideoFragment();
+        frag3  = new QuizFragment();
 
+        adapter.addFragment(frag1,"Tutorial");
+        adapter.addFragment(frag2,"Videos");
+        adapter.addFragment(frag3,"Quiz");
+        viewPager.setAdapter(adapter);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        setupViewPager(viewPager);
     }
 }
