@@ -22,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class AdvancedQuizActivity extends AppCompatActivity {
 
-    Button ButtonAnswer1, ButtonAnswer2, ButtonAnswer3, ButtonAnswer4;
+    Button ButtonAnswer1, ButtonAnswer2, ButtonAnswer3, ButtonAnswer4,endQuiz;
     TextView tvquestion, timer;
     int total = 0;
     int correct = 0;
@@ -45,6 +45,18 @@ public class AdvancedQuizActivity extends AppCompatActivity {
         ButtonAnswer2 = (Button) findViewById(R.id.btnanswer2);
         ButtonAnswer3 = (Button) findViewById(R.id.btnanswer3);
         ButtonAnswer4 = (Button) findViewById(R.id.btnanswer4);
+        endQuiz  = (Button) findViewById(R.id.endQuiz);
+        endQuiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"Quiz Ended",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(AdvancedQuizActivity.this,ResultActivity.class);
+                intent.putExtra("total",String.valueOf(total));
+                intent.putExtra("correct",String.valueOf(correct));
+                intent.putExtra("incorrect",String.valueOf(incorrect));
+                startActivity(intent);
+            }
+        });
 
 
     }
@@ -63,7 +75,7 @@ public class AdvancedQuizActivity extends AppCompatActivity {
         }
         else
         {
-            reference = FirebaseDatabase.getInstance().getReference().child("Questions").child(String.valueOf(computerCount));
+            reference = FirebaseDatabase.getInstance().getReference().child("Questions/Advanced").child(String.valueOf(computerCount));
             total++;
             reference.addValueEventListener(new ValueEventListener() {
                 @Override
