@@ -59,23 +59,30 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
+
+                    case R.id.home:
+                        Toast.makeText(MainActivity.this, "Home Selected Selected", Toast.LENGTH_SHORT).show();
+                        Intent next2= new Intent(MainActivity.this, MainActivity.class);
+                        startActivity(next2);
+                        break;
+
                     case R.id.setting:
                         Toast.makeText(MainActivity.this, "Setting Selected", Toast.LENGTH_SHORT).show();
                         Intent next= new Intent(MainActivity.this, Setting.class);
                         startActivity(next);
                         break;
 
-                    case R.id.quiz:
-                        Toast.makeText(MainActivity.this, "Quiz Selected", Toast.LENGTH_SHORT).show();
-                        Fragment fragment2 = new QuizFragment();
-                        moveToFragment(fragment2);
+                    case R.id.InterviewQuestion:
+                        Toast.makeText(MainActivity.this, "Interview Question  Selected", Toast.LENGTH_SHORT).show();
+                        Intent next1= new Intent(MainActivity.this, InterviewQuestion.class);
+                        startActivity(next1);
                         break;
 
-                    case R.id.notes:
-                        Toast.makeText(MainActivity.this, "Notes Selected", Toast.LENGTH_SHORT).show();
-                        Fragment fragment3 = new NotesFragmnet();
-                        moveToFragment(fragment3);
-                        break;
+
+
+
+
+
 
                     case R.id.about:
 
@@ -95,17 +102,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
 
-                    case R.id.videos:
-                        Toast.makeText(MainActivity.this, "Videos Selected", Toast.LENGTH_SHORT).show();
-                        Fragment fragment6 = new VideoFragment();
-                        moveToFragment(fragment6);
-                        break;
 
-                    case R.id.InterviewQuestion:
-                        Toast.makeText(MainActivity.this, "Interview Question  Selected", Toast.LENGTH_SHORT).show();
-                        Intent next1= new Intent(MainActivity.this, InterviewQuestion.class);
-                        startActivity(next1);
-                        break;
+
+
 
                     case R.id.logout: {
 
