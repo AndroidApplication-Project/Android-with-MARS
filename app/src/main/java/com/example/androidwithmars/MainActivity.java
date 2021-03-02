@@ -66,16 +66,18 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(next2);
                         break;
 
-                    case R.id.setting:
-                        Toast.makeText(MainActivity.this, "Setting Selected", Toast.LENGTH_SHORT).show();
-                        Intent next= new Intent(MainActivity.this, Setting.class);
-                        startActivity(next);
-                        break;
+
 
                     case R.id.InterviewQuestion:
                         Toast.makeText(MainActivity.this, "Interview Question  Selected", Toast.LENGTH_SHORT).show();
                         Intent next1= new Intent(MainActivity.this, InterviewQuestion.class);
                         startActivity(next1);
+                        break;
+
+                    case R.id.setting:
+                        Toast.makeText(MainActivity.this, "Setting Selected", Toast.LENGTH_SHORT).show();
+                        Intent next= new Intent(MainActivity.this, Setting.class);
+                        startActivity(next);
                         break;
 
 

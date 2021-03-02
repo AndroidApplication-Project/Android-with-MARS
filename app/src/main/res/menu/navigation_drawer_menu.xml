@@ -4,22 +4,22 @@
 
 
     <item
-        android:id="@+id/setting"
-        android:icon="@drawable/ic_settings"
-        android:title="Setting" />
-
-    <item
         android:id="@+id/home"
-        android:icon="@drawable/ic_quiz"
+        android:icon="@drawable/ic_home"
         android:title="Home" />
-
-
-
 
     <item
         android:id="@+id/InterviewQuestion"
         android:icon="@drawable/ic_question"
-        android:title="InterviewQuestion" />
+        android:title="Interview Question" />
+
+
+
+
+    <item
+        android:id="@+id/setting"
+        android:icon="@drawable/ic_settings"
+        android:title="Setting" />
     <item
         android:id="@+id/help"
         android:icon="@drawable/ic_help"
