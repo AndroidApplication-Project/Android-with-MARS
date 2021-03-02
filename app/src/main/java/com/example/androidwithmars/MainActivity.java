@@ -59,10 +59,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.documents:
-                        Toast.makeText(MainActivity.this, "Documents Selected", Toast.LENGTH_SHORT).show();
-                        Fragment fragment1 = new DocumentsFragment();
-                        moveToFragment(fragment1);
+                    case R.id.setting:
+                        Toast.makeText(MainActivity.this, "Setting Selected", Toast.LENGTH_SHORT).show();
+                        Intent next= new Intent(MainActivity.this, Setting.class);
+                        startActivity(next);
                         break;
 
                     case R.id.quiz:
@@ -101,10 +101,10 @@ public class MainActivity extends AppCompatActivity {
                         moveToFragment(fragment6);
                         break;
 
-                    case R.id.settings:
+                    case R.id.InterviewQuestion:
                         Toast.makeText(MainActivity.this, "Interview Question  Selected", Toast.LENGTH_SHORT).show();
-                        Intent next = new Intent(MainActivity.this, InterviewQuestion.class);
-                        startActivity(next);
+                        Intent next1= new Intent(MainActivity.this, InterviewQuestion.class);
+                        startActivity(next1);
                         break;
 
                     case R.id.logout: {
