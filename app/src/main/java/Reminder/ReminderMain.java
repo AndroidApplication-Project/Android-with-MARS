@@ -27,8 +27,8 @@ public class ReminderMain extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Calendar calendar= Calendar.getInstance();
-            calendar.set(Calendar.HOUR_OF_DAY,9);
-            calendar.set(Calendar.MINUTE,15);
+            calendar.set(Calendar.HOUR_OF_DAY,14);
+            calendar.set(Calendar.MINUTE,04);
             calendar.set(Calendar.SECOND,10);
             Intent intent= new Intent(getApplicationContext(),Notification_Receiver.class);
             PendingIntent pendingIntent= PendingIntent.getBroadcast(getApplicationContext(),100,intent,PendingIntent.FLAG_UPDATE_CURRENT);

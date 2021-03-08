@@ -85,7 +85,7 @@ public class About_Us1 extends Fragment {
         stuid.add("1993919");
         pics.add(R.drawable.pic1suna);
         stuname.add("Manjodh Singh ");
-        stuid.add("1993919");
+        stuid.add("1993904");
 
         //Initializing and setting Custom Adapter on List View
         StudentsAdapter adap = new StudentsAdapter(getActivity(),pics,stuid,stuname);

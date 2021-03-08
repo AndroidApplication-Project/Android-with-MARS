@@ -3,13 +3,17 @@ package com.example.androidwithmars;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -53,11 +57,13 @@ public class RegisterUser extends AppCompatActivity {
     private EditText mFullName, mEmail, mPassword, mPhone;
 
     private ImageView img;
+    static int PReqcode=1;
+    static int REQUESCODE=1;
     private Button btnRegister,browse;
     private TextView signIn;
     private FirebaseAuth firebaseAuth;
 //    private Button browse;
-    private Uri filepath;
+    Uri selectedImageUri;
     private Bitmap bitmap;
 
 
@@ -71,6 +77,17 @@ public class RegisterUser extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(),MainActivity.class));
             finish();
         }
+        img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Build.VERSION.SDK_INT>= 22){
+                    checkAndRequestPermission();
+                }
+                else{
+                    openGallery();
+                }
+            }
+        });
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,7 +166,7 @@ public class RegisterUser extends AppCompatActivity {
         });
 
 
-        browse.setOnClickListener(new View.OnClickListener() {
+       /*browse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Dexter.withActivity(RegisterUser.this)
@@ -174,7 +191,7 @@ public class RegisterUser extends AppCompatActivity {
                         }).check();
 
             }
-        });
+        });*/
 
 
         signIn.setOnClickListener(new View.OnClickListener() {
@@ -186,80 +203,50 @@ public class RegisterUser extends AppCompatActivity {
         });
     }
 
-//    private void uploadToFireBase() {
-//
-//        ProgressDialog dialog = new ProgressDialog(this);
-//        dialog.setTitle("File Uploading");
-//        dialog.show();
-//
-//
-//        mFullName = findViewById(R.id.fullName);
-//        mEmail = findViewById(R.id.userEmail);
-//        mPhone = findViewById(R.id.phone);
-//        mPassword=  findViewById(R.id.password);
-//
-//        FirebaseStorage storage = FirebaseStorage.getInstance();
-//        StorageReference uploader = storage.getReference("Image1"+ new Random().nextInt(50));
-//        uploader.putFile(filepath)
-//                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                    @Override
-//                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//
-//                        uploader.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                            @Override
-//                            public void onSuccess(Uri uri) {
-//                                dialog.dismiss();
-//                                FirebaseDatabase  db = FirebaseDatabase.getInstance();
-//                                DatabaseReference root =  db.getReference("user");
-//
-//                                DataHolder obj = new DataHolder(mFullName.getText().toString(),
-//                                        mEmail.getText().toString(),
-//                                        mPhone.getText().toString(),
-//                                        uri.toString());
-//                                root.child(mEmail.getText().toString()).setValue(obj);
-//
-//                                Toast.makeText(RegisterUser.this, "Uploaded", Toast.LENGTH_SHORT).show();
-//
-//                            }
-//                        });
-//
-//
-//                    }
-//                })
-//                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-//                    @Override
-//                    public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-//
-//                        float percent = (100*snapshot.getBytesTransferred())/snapshot.getTotalByteCount();
-//                          dialog.setMessage("Uploaded :" +(int)percent+ " % ");
-//
-//                    }
-//                });
-//
-//
-//
-//
-//
-//
-//
-//    }
+    private void openGallery() {
+        // Open gallery and wait for user permission
+        Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
+        galleryIntent.setType("image/*");
+        startActivityForResult(galleryIntent, REQUESCODE);
+
+    }
+
+    private void checkAndRequestPermission() {
+        if(ContextCompat.checkSelfPermission(RegisterUser.this, Manifest.permission.READ_EXTERNAL_STORAGE )
+                != PackageManager.PERMISSION_GRANTED){
+            if(ActivityCompat.shouldShowRequestPermissionRationale(RegisterUser.this,Manifest.permission.READ_EXTERNAL_STORAGE))
+            {
+                Toast.makeText(RegisterUser.this ,"Please accept for required permission",Toast.LENGTH_SHORT).show();
+            }
+            else {
+                ActivityCompat.requestPermissions(RegisterUser.this,
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        PReqcode);
+
+            }
+
+        }
+        else{
+            openGallery();
+        }
+
+
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (requestCode == 1 && resultCode == RESULT_OK) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == REQUESCODE  && data != null) {
+            // the user has selected picture, now saved in storage
 
-            filepath = data.getData();
-            try {
-                InputStream inputStream = getContentResolver().openInputStream(filepath);
-                bitmap = BitmapFactory.decodeStream(inputStream);
-                img.setImageBitmap(bitmap);
-            }
-            catch (Exception e){
-            }
+            selectedImageUri = data.getData();
+            img.setImageURI(selectedImageUri);
+
 
 
         }
-        super.onActivityResult(requestCode, resultCode, data);
+
     }
 
 
@@ -269,8 +256,8 @@ public class RegisterUser extends AppCompatActivity {
         mPassword = findViewById(R.id.password);
         btnRegister = findViewById(R.id.btnRegister);
 
-        img = findViewById(R.id.imageView);
-        browse = findViewById(R.id.btnBrowse);
+        img = findViewById(R.id.userImage);
+      //  browse = findViewById(R.id.btnBrowse);
 
 
         mPhone = findViewById(R.id.phone);
@@ -281,36 +268,4 @@ public class RegisterUser extends AppCompatActivity {
     }
 
 
-   /* private void processinsert() {
-        Map<String,Object> map=new HashMap<>();
-        map.put("email",mEmail.getText().toString());
-        map.put("password",mPassword.getText().toString());
-        map.put("name",mFullName.getText().toString());
-        map.put("phone",mPhone.getText().toString());
-
-
-//        uploadToFireBase();
-
-        FirebaseDatabase.getInstance("https://androidwithmars-default-rtdb.firebaseio.com/").getReference().child("user").push()
-                .setValue(map)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        mEmail.setText("");
-                        mPassword.setText("");
-                        mFullName.setText("");
-                        mPhone.setText("");
-
-                        Toast.makeText(getApplicationContext(),"Inserted Successfully",Toast.LENGTH_LONG).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e)
-                    {
-                        Toast.makeText(getApplicationContext(),"Could not insert",Toast.LENGTH_LONG).show();
-                    }
-                });
-
-    }*/
 }
