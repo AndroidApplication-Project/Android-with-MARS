@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import com.example.androidwithmars.R;
 import com.google.firebase.database.DataSnapshot;
@@ -20,6 +22,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.installations.RandomFidGenerator;
 
 public class BeginnerQuizActivity extends AppCompatActivity  {
     Button ButtonAnswer1, ButtonAnswer2, ButtonAnswer3, ButtonAnswer4,endQuiz;
@@ -30,6 +33,7 @@ public class BeginnerQuizActivity extends AppCompatActivity  {
     int incorrect = 0;
     DatabaseReference reference;
     int computerCount=0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +67,7 @@ public class BeginnerQuizActivity extends AppCompatActivity  {
 
     }
     private void updateQuestion() {
+
         computerCount++;
 
 
@@ -107,12 +112,11 @@ public class BeginnerQuizActivity extends AppCompatActivity  {
                                         updateQuestion();
                                     }
                                 }, 1500);
-
                             }
                             else
                             {
                                 Toast.makeText(getApplicationContext(),"Incorrect",Toast.LENGTH_SHORT).show();
-                                incorrect = incorrect+1;
+                                incorrect++;
 
                                 ButtonAnswer1.setBackgroundColor(Color.RED);
 
@@ -170,7 +174,7 @@ public class BeginnerQuizActivity extends AppCompatActivity  {
                             else
                             {
                                 Toast.makeText(getApplicationContext(),"Incorrect",Toast.LENGTH_SHORT).show();
-                                incorrect= incorrect+1;
+                                incorrect++;
 
                                 ButtonAnswer2.setBackgroundColor(Color.RED);
 
@@ -226,7 +230,8 @@ public class BeginnerQuizActivity extends AppCompatActivity  {
                             else
                             {
                                 Toast.makeText(getApplicationContext(),"Incorrect",Toast.LENGTH_SHORT).show();
-                                incorrect = incorrect+1;
+                                incorrect++;
+
 
                                 ButtonAnswer3.setBackgroundColor(Color.RED);
 
@@ -283,7 +288,7 @@ public class BeginnerQuizActivity extends AppCompatActivity  {
                             else
                             {
                                 Toast.makeText(getApplicationContext(),"Incorrect",Toast.LENGTH_SHORT).show();
-                                incorrect = incorrect+1;
+                                incorrect++;
 
                                 ButtonAnswer4.setBackgroundColor(Color.RED);
 
@@ -353,6 +358,8 @@ public class BeginnerQuizActivity extends AppCompatActivity  {
                 startActivity(i);
             }
         }.start();
+
+
 
     }
 }
