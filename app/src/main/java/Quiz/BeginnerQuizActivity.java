@@ -83,6 +83,7 @@ public class BeginnerQuizActivity extends AppCompatActivity  {
         else
         {
             reference = FirebaseDatabase.getInstance().getReference().child("Questions/Beginner").child(String.valueOf(computerCount));
+
             total++;
             reference.addValueEventListener(new ValueEventListener() {
                 @Override

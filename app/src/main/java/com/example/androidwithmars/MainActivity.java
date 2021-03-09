@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         final FirebaseUser user = firebaseAuth.getCurrentUser();
 
 
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.drawer_open, R.string.drawer_closed);
 

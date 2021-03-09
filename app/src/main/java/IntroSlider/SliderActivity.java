@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.androidwithmars.MainActivity;
+import com.example.androidwithmars.MainFragment;
 import com.example.androidwithmars.R;
 
 public class SliderActivity extends AppCompatActivity {
@@ -95,7 +96,7 @@ public class SliderActivity extends AppCompatActivity {
                 nNextbutton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(SliderActivity.this, MainActivity.class);
+                        Intent intent = new Intent(SliderActivity.this, MainFragment.class);
                         startActivity(intent);
                     }
                 });
