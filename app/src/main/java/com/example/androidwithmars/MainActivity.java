@@ -15,9 +15,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -25,6 +27,8 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import org.w3c.dom.Text;
 
 import java.util.Objects;
 
@@ -37,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseFirestore firebaseFirestore;
     private FirebaseAuth firebaseAuth;
 
-
+    FirebaseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +50,9 @@ public class MainActivity extends AppCompatActivity {
         initViews();
 
         final FirebaseUser user = firebaseAuth.getCurrentUser();
-
+        // initialize
+       firebaseAuth = FirebaseAuth.getInstance();
+       currentUser= firebaseAuth.getCurrentUser();
 
 //        setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
@@ -54,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
 
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        //method called
+        updateHeader();
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -81,11 +89,6 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
 
-
-
-
-
-
                     case R.id.about:
 
                         Toast.makeText(MainActivity.this, "About Us Selected", Toast.LENGTH_SHORT).show();
@@ -94,18 +97,11 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
 
-
-
-
                     case R.id.help:
                         Toast.makeText(MainActivity.this, "Help Selected", Toast.LENGTH_SHORT).show();
                         Fragment fragment5 = new Help1();
                         moveToFragment(fragment5);
                         break;
-
-
-
-
 
 
                     case R.id.logout: {
@@ -125,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                 }
                 return false;
+
             }
 
             private void moveToFragment(Fragment fragment){
@@ -142,6 +139,18 @@ public class MainActivity extends AppCompatActivity {
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(getApplicationContext(), UserLogin.class));
         finish();
+    }
+    public void updateHeader(){
+        NavigationView navigationView = (NavigationView) findViewById(R.id.navigationView);
+        View headerView = navigationView.getHeaderView(0);
+        TextView navUsername = headerView.findViewById(R.id.user_full_Name);
+        TextView navEmail = headerView.findViewById(R.id.user_email);
+        ImageView navImage = headerView.findViewById(R.id.user_photo);
+
+        navUsername.setText(currentUser.getDisplayName());
+        navEmail.setText(currentUser.getEmail());
+        //import image using Glide
+        Glide.with(this).load(currentUser.getPhotoUrl()).into(navImage);
     }
 
     private void initViews() {

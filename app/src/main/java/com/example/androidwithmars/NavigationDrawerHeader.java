@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class NavigationDrawerHeader extends AppCompatActivity {
     private ImageView userImage;
     private TextView userName,userEmail;
-    private RegisterUser registerUser;
+
 
 
     @Override
@@ -20,13 +20,13 @@ public class NavigationDrawerHeader extends AppCompatActivity {
 
 //        userName.setText();
 
-
     }
+    /*public void updateNavHeader(){}*/
 
     private void initViews() {
-        userImage = findViewById(R.id.userImage);
-        userName = findViewById(R.id.userName);
-        userEmail  = findViewById(R.id.userEmail);
+        userImage = findViewById(R.id.user_photo);
+        userName = findViewById(R.id.user_full_Name);
+        userEmail  = findViewById(R.id.user_email);
 
     }
 }
