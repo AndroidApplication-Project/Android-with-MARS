@@ -30,6 +30,11 @@
         android:title="About Us" />
 
     <item
+        android:id="@+id/feedback"
+        android:icon="@drawable/ic_about"
+        android:title="Feedback" />
+
+    <item
         android:id="@+id/logout"
         android:icon="@drawable/ic_logout"
         android:title="Logout"/>
