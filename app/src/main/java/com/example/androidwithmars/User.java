@@ -1,5 +1,7 @@
 package com.example.androidwithmars;
 
+import android.net.Uri;
+
 public class User {
     public String email,name,password,phone;
 
@@ -52,7 +54,7 @@ public class User {
         this.phone = phone;
     }
 
-    public User()
+    public User(String email, String name, String password, String phone, Uri selectedImageUri)
     {
 
     }
