@@ -32,6 +32,7 @@ import com.google.android.material.slider.Slider;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -63,7 +64,7 @@ public class RegisterUser extends AppCompatActivity {
     private TextView signIn;
     private FirebaseAuth firebaseAuth;
 //    private Button browse;
-    Uri selectedImageUri;
+   private Uri selectedImageUri;
     private Bitmap bitmap;
 
 
@@ -127,8 +128,11 @@ public class RegisterUser extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             //to do upload user
-                            User user1=new User(email,name,password,phone);
-                            FirebaseDatabase.getInstance().getReference("user").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                            User user1=new User(email,name,password,phone,selectedImageUri);
+                            updateUserInfo(name,selectedImageUri,firebaseAuth.getCurrentUser());
+                            FirebaseDatabase.getInstance()
+                                    .getReference("user")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(user1).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
@@ -202,6 +206,36 @@ public class RegisterUser extends AppCompatActivity {
             }
         });
     }
+    public void updateUserInfo(String name ,Uri selectedImageUri, FirebaseUser currentUser){
+        //upload userimage to storage and get url
+        StorageReference mstorage = FirebaseStorage.getInstance().getReference().child("user photo");
+        StorageReference imageFilepath = mstorage.child(selectedImageUri.getLastPathSegment());
+        imageFilepath.putFile(selectedImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                //image updated , get image url
+                imageFilepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        // URI contains image
+                        UserProfileChangeRequest profileUpdate = new UserProfileChangeRequest.Builder()
+                                .setDisplayName(name)
+                                .setPhotoUri(uri)
+                                .build();
+                        currentUser.updateProfile(profileUpdate)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+
+                                    }
+                                });
+                    }
+                });
+
+            }
+        });
+
+    }
 
     private void openGallery() {
         // Open gallery and wait for user permission
@@ -257,7 +291,7 @@ public class RegisterUser extends AppCompatActivity {
         btnRegister = findViewById(R.id.btnRegister);
 
         img = findViewById(R.id.userImage);
-      //  browse = findViewById(R.id.btnBrowse);
+
 
 
         mPhone = findViewById(R.id.phone);
