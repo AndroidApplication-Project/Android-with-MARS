@@ -97,6 +97,7 @@ public class RegisterUser extends AppCompatActivity {
                 String password = mPassword.getText().toString().trim();
                 String phone = mPhone.getText().toString().trim();
                 String name  = mFullName.getText().toString().trim();
+
 //                uploadToFireBase();
 
 
@@ -128,7 +129,8 @@ public class RegisterUser extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             //to do upload user
-                            User user1=new User(email,name,password,phone,selectedImageUri);
+                            User user1=new User(email,name,password,phone);
+                           // User user2=new User(selectedImageUri);
                             updateUserInfo(name,selectedImageUri,firebaseAuth.getCurrentUser());
                             FirebaseDatabase.getInstance()
                                     .getReference("user")

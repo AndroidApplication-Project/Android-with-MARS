@@ -146,9 +146,6 @@ public class Setting extends AppCompatActivity {
     private void changedata(){
 
 
-
-
-
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

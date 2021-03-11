@@ -4,6 +4,7 @@ import android.net.Uri;
 
 public class User {
     public String email,name,password,phone;
+    public Uri selectedImageUri;
 
     @Override
     public String toString() {
@@ -23,6 +24,7 @@ public class User {
         this.name = name;
         this.password = password;
         this.phone = phone;
+
     }
 
     public String getEmail() {
@@ -59,6 +61,15 @@ public class User {
 
     public User(String email, String name, String password, String phone, Uri selectedImageUri)
     {
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.phone = phone;
+        this.selectedImageUri=selectedImageUri;
 
+    }
+    public User (Uri selectedImageUri)
+    {
+        this.selectedImageUri=selectedImageUri;
     }
 }
