@@ -14,6 +14,9 @@ public class User {
                 ", phone='" + phone + '\'' +
                 '}';
     }
+    public User(){
+
+    }
 
     public User(String email, String name, String password, String phone) {
         this.email = email;

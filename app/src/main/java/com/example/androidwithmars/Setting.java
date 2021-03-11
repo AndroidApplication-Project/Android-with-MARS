@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,7 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -56,6 +59,7 @@ public class Setting extends AppCompatActivity {
 
     private TextView profileChangeBtn;
     private EditText edtNamee, edtPhonee, edtEmaill, edtPasswordd;
+    private Toolbar toolbar;
 
 
     @Override
@@ -63,10 +67,18 @@ public class Setting extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
 
+        toolbar=findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        final ActionBar actionbar=getSupportActionBar();
+        actionbar.setDisplayHomeAsUpEnabled(true);
+        actionbar.setHomeAsUpIndicator(R.drawable.ic_nav_menu);
+
         edtNamee = findViewById(R.id.edt_name);
         edtPhonee = findViewById(R.id.phone_number);
         edtEmaill = findViewById(R.id.email_id);
         edtPasswordd = findViewById(R.id.edt_password);
+
 
 
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -118,85 +130,67 @@ public class Setting extends AppCompatActivity {
             }
         });
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
+       saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                updateData();
+                changedata();
             }
         });
 
 
+
     }
 
-    private void updateData() {
+    private void changedata(){
 
-        databaseReference.child("user").addValueEventListener(new ValueEventListener() {
+
+
+
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //  Log.d("snapshot Test------->",snapshot.toString()); // @snapshot empty Null value
-                User userProfile = (User) snapshot.getValue(User.class); // null value
+            public void onClick(View v) {
 
+                databaseReference = FirebaseDatabase.getInstance().getReference("user");
+                userID = user.getUid();
+                String uemail, uname, upassword, uphone;
 
-                //Log.d("userProf Test------->",userProfile.toString()); // Fail
-                if (userProfile != null) {
-                    String email = userProfile.getEmail();
-                    String name = userProfile.getName();
-                    String password = userProfile.getPassword();
-                    String phone = userProfile.getPhone();
+                uemail = edtEmaill.getText().toString();
+                uname = edtNamee.getText().toString();
+                upassword = edtPasswordd.getText().toString();
+                uphone = edtPhonee.getText().toString();
+                User userdata = new User(uemail, uname, upassword, uphone);
+                FirebaseDatabase.getInstance().getReference("user").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                        .setValue(userdata);
+                // databaseReference.setValue(userdata);
+                Toast.makeText(Setting.this, "update succssfully", Toast.LENGTH_SHORT).show();
+                finish();
 
-                    edtEmaill.setText(email);
-                    edtNamee.setText(name);
-                    edtPasswordd.setText(password);
-                    edtPhonee.setText(phone);
-
-                    HashMap<String, Object> userMap = new HashMap<>();
-
-                    userMap.put("email", edtEmaill.getText().toString());
-                    userMap.put("name", edtNamee.getText().toString());
-                    userMap.put("password", edtPasswordd.getText().toString());
-                    userMap.put("phone", edtPhonee.getText().toString());
-
-
-                    databaseReference.child(firebaseAuth.getCurrentUser().getUid()).updateChildren(userMap)
-                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-
-                                    Toast.makeText(getApplicationContext(),"Inserted Successfully",Toast.LENGTH_LONG).show();
-                                }
-                            })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e)
-                                {
-                                    Toast.makeText(getApplicationContext(),"Could not insert",Toast.LENGTH_LONG).show();
-                                }
-                            });
-
-
-                    //  FirebaseDatabase.getInstance().getReference().child("user");
-
-
-                   // databaseReference.child(firebaseAuth.getCurrentUser().getUid()).updateChildren(userMap);
-
-                }
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(Setting.this, "Something wrong", Toast.LENGTH_SHORT).show();
 
             }
         });
 
-
     }
 
-    private void validateAndsave() {
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                Intent next2= new Intent(Setting.this, MainActivity.class);
+                startActivity(next2);
+                break;
+
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    /*  private void validateAndsave() {
         if (TextUtils.isEmpty(edtNamee.getText().toString())) {
             Toast.makeText(this, "Please Enter Your Name", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(edtPhonee.getText().toString())) {
@@ -217,7 +211,7 @@ public class Setting extends AppCompatActivity {
                     edtNamee.setText(name);
                     edtPasswordd.setText(password);
                     edtPhonee.setText(phonenum);*/
-            HashMap<String, Object> userMap = new HashMap<>();
+          /*  HashMap<String, Object> userMap = new HashMap<>();
 
             userMap.put("email", edtNamee.getText().toString());
             userMap.put("name", edtEmaill.getText().toString());
@@ -240,28 +234,11 @@ public class Setting extends AppCompatActivity {
                         }
                     });
 
-
-
-
-
-
-         /*   databaseReference.child(firebaseAuth.getCurrentUser().getUid()).updateChildren(userMap).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    Toast.makeText(Setting.this,"data sycceeed",Toast.LENGTH_SHORT).show();
-                }
-            });
-            final ProgressDialog progressDialog = new ProgressDialog(this);
-            progressDialog.setTitle("Set your profile");
-            progressDialog.setMessage("Please wait, while we are setting your data ");
-            progressDialog.show();*/
-
-
         }
 
 
 
-    }
+    }*/
 }
 
 
