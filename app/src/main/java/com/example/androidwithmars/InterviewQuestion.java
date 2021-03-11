@@ -1,9 +1,15 @@
 package com.example.androidwithmars;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.Toast;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,12 +17,23 @@ import java.util.List;
 public class InterviewQuestion extends AppCompatActivity {
     RecyclerView recyclerView;
     List<Question> questionList;
+    private Toolbar toolbar;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interview_question);
+
+        toolbar=findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        final ActionBar actionbar=getSupportActionBar();
+        actionbar.setDisplayHomeAsUpEnabled(true);
+        actionbar.setHomeAsUpIndicator(R.drawable.ic_nav_menu);
+
+
+
 
         recyclerView=findViewById(R.id.myRecyclerView);
         initData();
@@ -67,4 +84,17 @@ public class InterviewQuestion extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                Intent next2= new Intent(InterviewQuestion.this, MainActivity.class);
+                startActivity(next2);
+                break;
+
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
