@@ -103,6 +103,12 @@ public class MainActivity extends AppCompatActivity {
                         moveToFragment(fragment5);
                         break;
 
+                    case R.id.feedback:
+                        Toast.makeText(MainActivity.this, "Feedback Selected", Toast.LENGTH_SHORT).show();
+                        Intent fb= new Intent(MainActivity.this, FeedBackActivity.class);
+                        startActivity(fb);
+                        break;
+
 
                     case R.id.logout: {
 
