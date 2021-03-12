@@ -43,7 +43,7 @@ public class InterMediateQuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inter_mediate_quiz);
         reverseTimer(90,timer);
-        updateQuestion();
+
 
 
         timer = (TextView) findViewById(R.id.timer);
