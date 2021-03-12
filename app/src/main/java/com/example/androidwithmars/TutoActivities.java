@@ -38,23 +38,22 @@ public class TutoActivities extends Fragment {
 
         topicname.add("Activity Lifecycle");
         topicpic.add(R.drawable.pc);
-        topiclink.add("https://firebasestorage.googleapis.com/v0/b/gurunanankacademy.appspot.com/o/27.pdf?alt=media&token=c6ee87d8-d896-4330-93a0-31662c4d2a55");
-
+        topiclink.add("https://firebasestorage.googleapis.com/v0/b/androidwithmars.appspot.com/o/27.pdf?alt=media&token=a556b8be-872b-4582-af36-c5d900536593");
         topicname.add("What is an Intent?");
         topicpic.add(R.drawable.pc);
-        topiclink.add("https://firebasestorage.googleapis.com/v0/b/gurunanankacademy.appspot.com/o/part28.pdf?alt=media&token=37681498-aa22-4ddd-b27c-83983eb171ad");
+        topiclink.add("https://firebasestorage.googleapis.com/v0/b/androidwithmars.appspot.com/o/part28.pdf?alt=media&token=de0fb87b-235c-4f23-b4d0-d7c9afb146e7");
 
         topicname.add("Fragments in Java");
         topicpic.add(R.drawable.puzzle);
-        topiclink.add("https://firebasestorage.googleapis.com/v0/b/gurunanankacademy.appspot.com/o/part29.pdf?alt=media&token=b80ee591-7818-4950-9fd6-2f8f275ca23b");
-
+        topiclink.add("https://firebasestorage.googleapis.com/v0/b/androidwithmars.appspot.com/o/part29.pdf?alt=media&token=8dc2ca7a-4688-4c04-9a6d-e18b3d2a0a0a");
         topicname.add("Fragments in XML");
         topicpic.add(R.drawable.puzzle2);
-        topiclink.add("https://firebasestorage.googleapis.com/v0/b/gurunanankacademy.appspot.com/o/part30.pdf?alt=media&token=3326c42e-e2ba-456b-8934-0447df40c747");
+        topiclink.add("https://firebasestorage.googleapis.com/v0/b/androidwithmars.appspot.com/o/part30.pdf?alt=media&token=93b94b33-9d0e-48a0-ab48-367f0be3cb03");
 
         topicname.add("Inter Fragment Communication");
         topicpic.add(R.drawable.puzzle);
-        topiclink.add("https://firebasestorage.googleapis.com/v0/b/gurunanankacademy.appspot.com/o/part31.pdf?alt=media&token=a07270f6-f8a1-4a4d-9f78-b5eeef7f552b");
+        topiclink.add("https://firebasestorage.googleapis.com/v0/b/androidwithmars.appspot.com/o/part31.pdf?alt=media&token=2928e125-f618-483a-973c-69464d91cc7d");
+
 
         TopicsAdapter adap = new TopicsAdapter(getActivity(),topicpic,topicname,topiclink);
         list.setAdapter(adap);

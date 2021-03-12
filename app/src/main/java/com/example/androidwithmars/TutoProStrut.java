@@ -40,23 +40,25 @@ public class TutoProStrut extends Fragment {
 
         topicname.add("Project Structure Introduction");
         topicpic.add(R.drawable.tournament);
-        topiclink.add("https://firebasestorage.googleapis.com/v0/b/gurunanankacademy.appspot.com/o/part13.pdf?alt=media&token=e0e4f9f7-9b71-492b-bea5-87814dd42fa2");
+        topiclink.add("https://firebasestorage.googleapis.com/v0/b/androidwithmars.appspot.com/o/part13.pdf?alt=media&token=5099bfde-bde9-4a21-8896-2cfeabd5a157");
 
         topicname.add("App Module");
         topicpic.add(R.drawable.motherboard);
-        topiclink.add("https://firebasestorage.googleapis.com/v0/b/gurunanankacademy.appspot.com/o/part14.pdf?alt=media&token=ae875e8b-0536-4b7f-9fcb-73f54886e003");
+        topiclink.add("https://firebasestorage.googleapis.com/v0/b/androidwithmars.appspot.com/o/part14.pdf?alt=media&token=f7785073-f2d7-4d47-941d-186e2b404535");
+
 
         topicname.add("Manifest");
         topicpic.add(R.drawable.petition);
-        topiclink.add("https://firebasestorage.googleapis.com/v0/b/gurunanankacademy.appspot.com/o/part15.pdf?alt=media&token=e5721675-51b1-4ee6-8d86-fb5a73ca1f51");
+        topiclink.add("https://firebasestorage.googleapis.com/v0/b/androidwithmars.appspot.com/o/part15.pdf?alt=media&token=cd3dc7c3-d279-4176-a1b5-22593ec18c5b");
+
 
         topicname.add("Java Source Code");
         topicpic.add(R.drawable.java);
-        topiclink.add("https://firebasestorage.googleapis.com/v0/b/gurunanankacademy.appspot.com/o/part16.pdf?alt=media&token=0937099f-a5f6-40d9-bef0-39093f8c82eb");
+        topiclink.add("https://firebasestorage.googleapis.com/v0/b/androidwithmars.appspot.com/o/part16.pdf?alt=media&token=88318ec4-23fd-4cba-9d47-223c85b15a8a");
 
         topicname.add("App Resources");
         topicpic.add(R.drawable.descriptor);
-        topiclink.add("https://firebasestorage.googleapis.com/v0/b/gurunanankacademy.appspot.com/o/part17.pdf?alt=media&token=f76aa533-6673-48a9-99cd-16242a436cd3");
+        topiclink.add("https://firebasestorage.googleapis.com/v0/b/androidwithmars.appspot.com/o/part17.pdf?alt=media&token=72bd0601-6c6a-4945-ba1d-a2b983ba4954");
 
 
         TopicsAdapter adap = new TopicsAdapter(getActivity(),topicpic,topicname,topiclink);

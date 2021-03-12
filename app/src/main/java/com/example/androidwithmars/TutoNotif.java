@@ -39,15 +39,17 @@ public class TutoNotif extends Fragment {
 
         topicname.add("Android Notifications Introduction");
         topicpic.add(R.drawable.message);
-        topiclink.add("https://firebasestorage.googleapis.com/v0/b/gurunanankacademy.appspot.com/o/part51.pdf?alt=media&token=5cb197e9-ed92-4206-88b2-2c9aace21125");
+        topiclink.add("https://firebasestorage.googleapis.com/v0/b/androidwithmars.appspot.com/o/part51.pdf?alt=media&token=ae176658-b5c2-4f37-a673-d53ea5a19af4");
+
 
         topicname.add("Inbox Style Notification");
         topicpic.add(R.drawable.email);
-        topiclink.add("https://firebasestorage.googleapis.com/v0/b/gurunanankacademy.appspot.com/o/part52.pdf?alt=media&token=28ea4759-5c7c-4625-b5ff-ddf198bcfab5");
+        topiclink.add("https://firebasestorage.googleapis.com/v0/b/androidwithmars.appspot.com/o/part52.pdf?alt=media&token=9d93404a-891f-4b38-9e06-a1377bd2fcd6");
 
         topicname.add("Big Text Style Notification");
         topicpic.add(R.drawable.textbox);
-        topiclink.add("https://firebasestorage.googleapis.com/v0/b/gurunanankacademy.appspot.com/o/part53.pdf?alt=media&token=f0fa460d-d4da-4603-8130-1ecbe5f77d9e");
+        topiclink.add("https://firebasestorage.googleapis.com/v0/b/androidwithmars.appspot.com/o/part53.pdf?alt=media&token=2ddc47f5-e65a-47b3-872e-bfe477a2914a");
+
 
         TopicsAdapter adap = new TopicsAdapter(getActivity(),topicpic,topicname,topiclink);
         list.setAdapter(adap);
