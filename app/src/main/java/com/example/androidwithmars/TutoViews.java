@@ -40,11 +40,12 @@ public class TutoViews extends Fragment {
 
         topicname.add("What are views? What is a Viewgroup?");
         topicpic.add(R.drawable.list);
-        topiclink.add("https://firebasestorage.googleapis.com/v0/b/gurunanankacademy.appspot.com/o/part18.pdf?alt=media&token=fa455129-24e4-470e-b90b-9bd20a87e7c5");
+        topiclink.add("https://firebasestorage.googleapis.com/v0/b/androidwithmars.appspot.com/o/part18.pdf?alt=media&token=835bc622-e6f4-4815-8b36-041c1ab96462");
 
         topicname.add("Introduction about Layouts and its Types");
         topicpic.add(R.drawable.tournament);
-        topiclink.add("https://firebasestorage.googleapis.com/v0/b/gurunanankacademy.appspot.com/o/part19.pdf?alt=media&token=5824de80-f392-48fd-93a2-0167f16d4cae");
+        topiclink.add("https://firebasestorage.googleapis.com/v0/b/androidwithmars.appspot.com/o/part19.pdf?alt=media&token=ca359c42-5401-41e4-8a21-ea489af2c8db");
+
 
         TopicsAdapter adap = new TopicsAdapter(getActivity(),topicpic,topicname,topiclink);
         list.setAdapter(adap);

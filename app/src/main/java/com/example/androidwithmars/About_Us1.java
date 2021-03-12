@@ -1,20 +1,17 @@
 package com.example.androidwithmars;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -68,7 +65,7 @@ public class About_Us1 extends Fragment {
         stuname.add("Sunayna Sohpaul");
         stuid.add("1993557");
 
-        pics.add(R.drawable.monikapic);
+        pics.add(R.drawable.buggu);
         stuname.add("Monika Monika");
         stuid.add("1993500");
 
@@ -76,11 +73,11 @@ public class About_Us1 extends Fragment {
         stuname.add("Akash Jha");
         stuid.add("1993392");
 
-        pics.add(R.drawable.pic1suna);
+        pics.add(R.drawable.sus);
         stuname.add("Sushant Sharma");
         stuid.add("1993387");
 
-        pics.add(R.drawable.pic1suna);
+        pics.add(R.drawable.raghv);
         stuname.add("Raghav Kasrija ");
         stuid.add("1993919");
         pics.add(R.drawable.pic1suna);
