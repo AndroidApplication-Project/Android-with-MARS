@@ -18,6 +18,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -25,6 +26,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,6 +35,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
+import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
@@ -60,6 +63,7 @@ public class Setting extends AppCompatActivity {
     private TextView profileChangeBtn;
     private EditText edtNamee, edtPhonee, edtEmaill, edtPasswordd;
     private Toolbar toolbar;
+    private Uri selectedImageUri;
 
 
     @Override
@@ -78,6 +82,7 @@ public class Setting extends AppCompatActivity {
         edtPhonee = findViewById(R.id.phone_number);
         edtEmaill = findViewById(R.id.email_id);
         edtPasswordd = findViewById(R.id.edt_password);
+        profileChaneBtn=findViewById(R.id.change_profile_btn);
 
 
 
@@ -130,6 +135,21 @@ public class Setting extends AppCompatActivity {
             }
         });
 
+
+        // add  image
+        User userimg=new User();
+
+        updateUserInfo(selectedImageUri,firebaseAuth.getCurrentUser());
+        FirebaseDatabase.getInstance()
+                .getReference("user")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+            }
+        });
+
        saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -163,6 +183,7 @@ public class Setting extends AppCompatActivity {
                         .setValue(userdata);
                 // databaseReference.setValue(userdata);
                 Toast.makeText(Setting.this, "update succssfully", Toast.LENGTH_SHORT).show();
+                //Glide.with(this).load(currentUser.getPhotoUrl()).into(navImage);
                 finish();
 
 
@@ -236,6 +257,37 @@ public class Setting extends AppCompatActivity {
 
 
     }*/
+
+
+    public void updateUserInfo(Uri selectedImageUri, FirebaseUser currentUser){
+        //upload userimage to storage and get url
+        StorageReference mstorage = FirebaseStorage.getInstance().getReference().child("user photo");
+        StorageReference imageFilepath = mstorage.child(selectedImageUri.getLastPathSegment());
+        imageFilepath.putFile(selectedImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                //image updated , get image url
+                imageFilepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        // URI contains image
+                        UserProfileChangeRequest profileUpdate = new UserProfileChangeRequest.Builder()
+                                .setPhotoUri(uri)
+                                .build();
+                        currentUser.updateProfile(profileUpdate)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+
+                                    }
+                                });
+                    }
+                });
+
+            }
+        });
+
+    }
 }
 
 
