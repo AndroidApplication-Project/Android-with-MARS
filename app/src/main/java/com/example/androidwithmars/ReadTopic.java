@@ -63,6 +63,7 @@ public class ReadTopic extends AppCompatActivity {
         url  = getIntent().getStringExtra("link");
         url1 =url;
         try {
+            new RetrivePDFfromUrl().execute(url1);
             url=URLEncoder.encode(url,"UTF-8");
             web.loadUrl("https://docs.google.com/gview?embedded=true&url="+url);
         } catch (UnsupportedEncodingException e) {
