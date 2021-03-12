@@ -33,7 +33,6 @@
         <activity android:name="Quiz.InterMediateQuizActivity" />
         <activity android:name="Quiz.ResultActivity" />
         <activity android:name=".InterviewQuestion" />
-        <activity android:name=".HomeSetting" />
         <activity android:name=".Setting" />
         <activity android:name=".FragmentB1" />
         <activity android:name=".UserLogin" />
