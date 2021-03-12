@@ -265,7 +265,7 @@ public class RegisterUser extends AppCompatActivity {
         mPassword = findViewById(R.id.password);
         btnRegister = findViewById(R.id.btnRegister);
 
-        img = findViewById(R.id.imageView);
+        img = findViewById(R.id.userImage);
 
         mPhone = findViewById(R.id.phone);
 
