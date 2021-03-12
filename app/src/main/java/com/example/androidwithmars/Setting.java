@@ -136,19 +136,6 @@ public class Setting extends AppCompatActivity {
         });
 
 
-        // add  image
-        User userimg=new User();
-
-        updateUserInfo(selectedImageUri,firebaseAuth.getCurrentUser());
-        FirebaseDatabase.getInstance()
-                .getReference("user")
-                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-
-            }
-        });
 
        saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -208,86 +195,8 @@ public class Setting extends AppCompatActivity {
     }
 
 
-    /*  private void validateAndsave() {
-        if (TextUtils.isEmpty(edtNamee.getText().toString())) {
-            Toast.makeText(this, "Please Enter Your Name", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(edtPhonee.getText().toString())) {
-            Toast.makeText(this, "Please Enter Your Phone No. ", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(edtEmaill.getText().toString())) {
-            Toast.makeText(this, "Please Enter Your Email id. ", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(edtPasswordd.getText().toString())) {
-            Toast.makeText(this, "Please Enter Your password", Toast.LENGTH_SHORT).show();
-        } else {
-           // User userProfile = snapshot.getValue(User.class);
-
-           /* String email = userProfile.getEmail();
-            String name = userProfile.getName();
-            String password = userProfile.getPassword();
-            String phonenum = userProfile.getPhone();
-
-                    edtEmaill.setText(email);
-                    edtNamee.setText(name);
-                    edtPasswordd.setText(password);
-                    edtPhonee.setText(phonenum);*/
-          /*  HashMap<String, Object> userMap = new HashMap<>();
-
-            userMap.put("email", edtNamee.getText().toString());
-            userMap.put("name", edtEmaill.getText().toString());
-            userMap.put("password", edtPasswordd.getText().toString());
-            userMap.put("phone", edtPhonee.getText().toString());
-
-            databaseReference.child(firebaseAuth.getCurrentUser().getUid()).updateChildren(userMap)
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-
-                            Toast.makeText(getApplicationContext(),"Inserted Successfully",Toast.LENGTH_LONG).show();
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e)
-                        {
-                            Toast.makeText(getApplicationContext(),"Could not insert",Toast.LENGTH_LONG).show();
-                        }
-                    });
-
-        }
 
 
-
-    }*/
-
-
-    public void updateUserInfo(Uri selectedImageUri, FirebaseUser currentUser){
-        //upload userimage to storage and get url
-        StorageReference mstorage = FirebaseStorage.getInstance().getReference().child("user photo");
-        StorageReference imageFilepath = mstorage.child(selectedImageUri.getLastPathSegment());
-        imageFilepath.putFile(selectedImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                //image updated , get image url
-                imageFilepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        // URI contains image
-                        UserProfileChangeRequest profileUpdate = new UserProfileChangeRequest.Builder()
-                                .setPhotoUri(uri)
-                                .build();
-                        currentUser.updateProfile(profileUpdate)
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-
-                                    }
-                                });
-                    }
-                });
-
-            }
-        });
-
-    }
 }
 
 
