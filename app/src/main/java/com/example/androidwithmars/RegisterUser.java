@@ -172,33 +172,6 @@ public class RegisterUser extends AppCompatActivity {
         });
 
 
-       /*browse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Dexter.withActivity(RegisterUser.this)
-                        .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-                        .withListener(new PermissionListener() {
-                            @Override
-                            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                                Intent intent = new Intent(Intent.ACTION_PICK);
-                                intent.setType("image/*");
-                                startActivityForResult(Intent.createChooser
-                                        (intent, "Please select  Image"), 1);
-                            }
-                            @Override
-                            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
-
-                            }
-
-                            @Override
-                            public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
-                                permissionToken.continuePermissionRequest();
-                            }
-                        }).check();
-
-            }
-        });*/
-
 
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -292,9 +265,7 @@ public class RegisterUser extends AppCompatActivity {
         mPassword = findViewById(R.id.password);
         btnRegister = findViewById(R.id.btnRegister);
 
-        img = findViewById(R.id.userImage);
-
-
+        img = findViewById(R.id.imageView);
 
         mPhone = findViewById(R.id.phone);
 
