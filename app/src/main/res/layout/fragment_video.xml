@@ -4,94 +4,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/colorTranswhite"
     android:orientation="vertical"
     tools:context=".VideoFragment">
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
         android:orientation="vertical">
-
 
         <LinearLayout
             android:id="@+id/selectDifficultyLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="50dp"
-            android:orientation="vertical"
-            android:visibility="visible">
-
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginStart="145dp"
-                android:src="@drawable/youtube" />
+            android:layout_margin="10dp"
+            android:orientation="vertical">
 
             <Button
+
                 android:id="@+id/btnBeginnerVideo"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="65dp"
-                android:layout_marginTop="70dp"
-                android:layout_marginBottom="45dp"
-                android:background="@drawable/back7"
-                android:drawableTop="@drawable/lv11"
+                android:layout_margin="60dp"
                 android:padding="7dp"
-                android:text="Beginner"
-                android:textColor="#000"
-                app:backgroundTint="@null" />
+                android:text="Beginner" />
 
             <Button
                 android:id="@+id/btnIntermediateVideo"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="65dp"
-                android:layout_marginBottom="45dp"
-                android:background="@drawable/back7"
-                android:drawableTop="@drawable/lv22"
+                android:layout_margin="60dp"
+                android:layout_marginBottom="70dp"
                 android:padding="7dp"
-                android:text="Intermediate"
-                android:textColor="#000"
-                app:backgroundTint="@null" />
+                android:text="Intermediate" />
 
             <Button
                 android:id="@+id/btnAdvancedVideo"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="65dp"
-                android:layout_marginBottom="45dp"
-                android:background="@drawable/back7"
-                android:drawableTop="@drawable/lv33"
+                android:layout_margin="60dp"
+               android:layout_marginBottom="30dp"
                 android:padding="7dp"
-                android:text="Advanced"
-                android:textColor="#000"
-                app:backgroundTint="@null" />
+                android:text="Advanced" />
 
 
         </LinearLayout>
 
 
+
+
         <LinearLayout
             android:id="@+id/beginnerVideos"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:orientation="vertical"
-            android:padding="4dp"
-            android:visibility="gone">
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="30dp"
-                android:text=" INSTALLATION AND OVERVIEW"
-                android:textColor="#2136F3"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+            android:padding="4dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -124,17 +93,6 @@
                 app:autoPlay="false"
                 app:showYouTubeButton="false"
                 app:videoId="myjSxtAk9XM" />
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="30dp"
-                android:text=" BASICS OF ANDROID"
-                android:textColor="#2136F3"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
 
             <TextView
                 android:layout_width="match_parent"
@@ -203,7 +161,6 @@
                 app:showYouTubeButton="false"
                 app:videoId="cTlWwuAvRpE" />
 
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -221,26 +178,18 @@
                 app:videoId="3f0NAn5xFy4" />
 
 
-        </LinearLayout>
 
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/intermediateVideos"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:orientation="vertical"
-            android:padding="4dp"
-            android:visibility="gone">
+            android:padding="4dp">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="30dp"
-                android:text="SIGN UP AND LOGIN"
-                android:textColor="#2136F3"
-                android:textSize="20dp"
-                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -276,15 +225,6 @@
                 app:showYouTubeButton="false"
                 app:videoId="ihHdHra7zF8" />
 
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="30dp"
-                android:text=" DIFFERENT VIEWS IN ANDROID"
-                android:textColor="#2136F3"
-                android:textSize="20dp"
-                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -338,15 +278,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="30dp"
-                android:text="FRAGMENT IN ANDROID"
-                android:textColor="#2136F3"
-                android:textSize="25dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text=" Android Fragment Part1"
                 android:textColor="#009688"
@@ -378,15 +309,6 @@
                 app:showYouTubeButton="false"
                 app:videoId="FF-e6CnBwYY" />
 
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="30dp"
-                android:text="DATABASE IN ANDROID"
-                android:textColor="#2136F3"
-                android:textSize="20dp"
-                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -440,15 +362,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="30dp"
-                android:text="HOW TO USE JSON"
-                android:textColor="#2136F3"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text=" Android with JSON"
                 android:textColor="#009688"
@@ -463,14 +376,6 @@
                 app:showYouTubeButton="false"
                 app:videoId="KdweixONFyA" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="30dp"
-                android:text="CLOUD DATABASE 101"
-                android:textColor="#2136F3"
-                android:textSize="25dp"
-                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -510,22 +415,12 @@
 
         <LinearLayout
             android:id="@+id/advancedVideos"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:orientation="vertical"
-            android:padding="4dp"
-            android:visibility="gone">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="30dp"
-                android:text="NOTIFICATION IN ANDROID"
-                android:textColor="#2136F3"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
+            android:padding="4dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -560,16 +455,6 @@
                 app:videoId="CZ575BuLBo4" />
 
 
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="30dp"
-                android:text="ANDROID ADVANCED CONCEPTS"
-                android:textColor="#2136F3"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -586,6 +471,7 @@
                 app:autoPlay="false"
                 app:showYouTubeButton="false"
                 app:videoId="n0mkYSjldeA" />
+
 
 
             <TextView
@@ -606,6 +492,9 @@
                 app:videoId="_xUcYfbtfsI" />
 
 
+
+
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -621,6 +510,8 @@
                 app:autoPlay="false"
                 app:showYouTubeButton="false"
                 app:videoId="xPi-z3nOcn8" />
+
+
 
 
             <TextView
@@ -640,14 +531,9 @@
                 app:videoId="312RhjfetP8" />
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="30dp"
-                android:text="EXISTING APPS CLONE"
-                android:textColor="#2136F3"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+
+
+
 
             <TextView
                 android:layout_width="match_parent"
@@ -664,6 +550,9 @@
                 app:autoPlay="false"
                 app:showYouTubeButton="false"
                 app:videoId="988UZFB0heA" />
+
+
+
 
 
             <TextView
@@ -684,10 +573,12 @@
                 app:videoId="bRo1HtdZLRQ" />
 
 
+
+
+
         </LinearLayout>
 
     </LinearLayout>
 
 
 </ScrollView>
-
