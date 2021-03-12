@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import Quiz.AdvancedQuizActivity;
 import Quiz.BeginnerQuizActivity;
 import Quiz.InterMediateQuizActivity;
 
@@ -45,6 +46,14 @@ public class QuizFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(v.getContext(), InterMediateQuizActivity.class);
+                v.getContext().startActivity(intent);
+            }
+        });
+        Button Advanced = (Button) v.findViewById(R.id.btnAdvanced);
+        Advanced.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(v.getContext(), AdvancedQuizActivity.class);
                 v.getContext().startActivity(intent);
             }
         });

@@ -18,6 +18,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -25,6 +26,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,6 +35,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
+import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
@@ -60,6 +63,7 @@ public class Setting extends AppCompatActivity {
     private TextView profileChangeBtn;
     private EditText edtNamee, edtPhonee, edtEmaill, edtPasswordd;
     private Toolbar toolbar;
+    private Uri selectedImageUri;
 
 
     @Override
@@ -78,6 +82,7 @@ public class Setting extends AppCompatActivity {
         edtPhonee = findViewById(R.id.phone_number);
         edtEmaill = findViewById(R.id.email_id);
         edtPasswordd = findViewById(R.id.edt_password);
+        profileChaneBtn=findViewById(R.id.change_profile_btn);
 
 
 
@@ -130,6 +135,8 @@ public class Setting extends AppCompatActivity {
             }
         });
 
+
+
        saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -163,6 +170,7 @@ public class Setting extends AppCompatActivity {
                         .setValue(userdata);
                 // databaseReference.setValue(userdata);
                 Toast.makeText(Setting.this, "update succssfully", Toast.LENGTH_SHORT).show();
+                //Glide.with(this).load(currentUser.getPhotoUrl()).into(navImage);
                 finish();
 
 
@@ -187,55 +195,8 @@ public class Setting extends AppCompatActivity {
     }
 
 
-    /*  private void validateAndsave() {
-        if (TextUtils.isEmpty(edtNamee.getText().toString())) {
-            Toast.makeText(this, "Please Enter Your Name", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(edtPhonee.getText().toString())) {
-            Toast.makeText(this, "Please Enter Your Phone No. ", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(edtEmaill.getText().toString())) {
-            Toast.makeText(this, "Please Enter Your Email id. ", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(edtPasswordd.getText().toString())) {
-            Toast.makeText(this, "Please Enter Your password", Toast.LENGTH_SHORT).show();
-        } else {
-           // User userProfile = snapshot.getValue(User.class);
-
-           /* String email = userProfile.getEmail();
-            String name = userProfile.getName();
-            String password = userProfile.getPassword();
-            String phonenum = userProfile.getPhone();
-
-                    edtEmaill.setText(email);
-                    edtNamee.setText(name);
-                    edtPasswordd.setText(password);
-                    edtPhonee.setText(phonenum);*/
-          /*  HashMap<String, Object> userMap = new HashMap<>();
-
-            userMap.put("email", edtNamee.getText().toString());
-            userMap.put("name", edtEmaill.getText().toString());
-            userMap.put("password", edtPasswordd.getText().toString());
-            userMap.put("phone", edtPhonee.getText().toString());
-
-            databaseReference.child(firebaseAuth.getCurrentUser().getUid()).updateChildren(userMap)
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-
-                            Toast.makeText(getApplicationContext(),"Inserted Successfully",Toast.LENGTH_LONG).show();
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e)
-                        {
-                            Toast.makeText(getApplicationContext(),"Could not insert",Toast.LENGTH_LONG).show();
-                        }
-                    });
-
-        }
 
 
-
-    }*/
 }
 
 

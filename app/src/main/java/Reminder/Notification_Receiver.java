@@ -19,7 +19,7 @@ public class Notification_Receiver extends BroadcastReceiver {
         Intent repeating_intent = new Intent(context, MainFragment.class);
         repeating_intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(context,100,repeating_intent,PendingIntent.FLAG_UPDATE_CURRENT);
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "DailyReminder")
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context , "DailyReminder")
                 .setContentIntent(pendingIntent).setSmallIcon(android.R.drawable.arrow_up_float)
                 .setContentTitle("Daily Reminder")
                 .setContentText("Don't miss, Practice everyday!!!!")

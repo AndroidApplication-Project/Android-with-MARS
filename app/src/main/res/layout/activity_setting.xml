@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#00994C"
+        app:titleTextColor="#ffffff"
         android:elevation="4dp" />
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -19,7 +20,7 @@
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-        android:src="@drawable/profile_pic"
+        android:src="@drawable/logo3"
         app:civ_border_color="@color/design_default_color_primary"
         app:civ_border_width="2dp"
         />

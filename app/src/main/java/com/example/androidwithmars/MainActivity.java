@@ -1,6 +1,7 @@
 package com.example.androidwithmars;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -49,6 +50,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initViews();
+
+        toolbar=findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        final ActionBar actionbar=getSupportActionBar();
+        actionbar.setDisplayHomeAsUpEnabled(true);
+        actionbar.setHomeAsUpIndicator(R.drawable.ic_nav_menu);
 
         final FirebaseUser user = firebaseAuth.getCurrentUser();
         // initialize

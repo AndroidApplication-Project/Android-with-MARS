@@ -27,8 +27,8 @@ public class ReminderMain extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Calendar calendar= Calendar.getInstance();
-            calendar.set(Calendar.HOUR_OF_DAY,14);
-            calendar.set(Calendar.MINUTE,04);
+            calendar.set(Calendar.HOUR_OF_DAY,20);
+            calendar.set(Calendar.MINUTE,15);
             calendar.set(Calendar.SECOND,10);
             Intent intent= new Intent(getApplicationContext(),Notification_Receiver.class);
             PendingIntent pendingIntent= PendingIntent.getBroadcast(getApplicationContext(),100,intent,PendingIntent.FLAG_UPDATE_CURRENT);
@@ -43,9 +43,9 @@ public class ReminderMain extends AppCompatActivity {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = "DailyReminder";
-            String description = "DailyREminderTouse app";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel("DailyReminders", name, importance);
+            String description = "DailyReminderTouse app";
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel channel = new NotificationChannel("DailyReminders", name, NotificationManager.IMPORTANCE_HIGH);
             channel.setDescription(description);
 
             NotificationManager notificationManager = getSystemService(NotificationManager.class);

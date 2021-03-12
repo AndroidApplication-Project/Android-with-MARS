@@ -8,9 +8,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,6 +35,7 @@ public class MainFragment extends Fragment {
     //This is our viewPager
     private ViewPager viewPager;
 
+
     ViewPagerAdapter adapter;
 
     Tutorial1 frag1;
@@ -49,6 +52,8 @@ public class MainFragment extends Fragment {
         viewPager = (ViewPager)view.findViewById(R.id.viewpager);
 
         viewPager.setOffscreenPageLimit(2);
+
+
 
         setupViewPager(viewPager);
         //Initializing the tablayout
@@ -109,4 +114,6 @@ public class MainFragment extends Fragment {
 
         setupViewPager(viewPager);
     }
+
+
 }
