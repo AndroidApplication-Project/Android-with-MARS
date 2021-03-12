@@ -54,13 +54,6 @@ public class AdvancedQuizActivity extends AppCompatActivity {
         ButtonAnswer4 = (Button) findViewById(R.id.btnanswer4);
 
         endQuiz = (Button) findViewById(R.id.endQuiz);
-        endQuiz.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AdvancedQuizActivity.this,ResultActivity.class);
-                startActivity(intent);
-            }
-        });
 
 
         prd    = new ProgressDialog(AdvancedQuizActivity.this);
@@ -135,6 +128,17 @@ public class AdvancedQuizActivity extends AppCompatActivity {
         {
 
         }
+        endQuiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"Quiz Ended",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(AdvancedQuizActivity.this,ResultActivity.class);
+                intent.putExtra("total",String.valueOf(total));
+                intent.putExtra("correct",String.valueOf(correct));
+                intent.putExtra("incorrect",String.valueOf(incorrect));
+                startActivity(intent);
+            }
+        });
 
 
 
